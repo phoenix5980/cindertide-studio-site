@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const INSTALL_CMD = "curl -fsSL https://specc.sh | bash";
+const INSTALL_CMD = "git clone https://github.com/phoenix5980";
 
 const PREREQS = ["node", "docker", "pnpm"] as const;
 
@@ -117,11 +117,9 @@ export function QuickStart() {
               </span>
               {/* Command — single line, syntax highlighted */}
               <span>
-                <span style={{ color: "#56b6c2" }}>curl</span>{" "}
-                <span style={{ color: "#98c379" }}>-fsSL</span>{" "}
-                <span style={{ color: "#c678dd" }}>https://specc.sh</span>{" "}
-                <span style={{ color: "#abb2bf" }}>|</span>{" "}
-                <span style={{ color: "#56b6c2" }}>bash</span>
+                <span style={{ color: "#56b6c2" }}>git</span>{" "}
+                <span style={{ color: "#56b6c2" }}>clone</span>{" "}
+                <span style={{ color: "#c678dd" }}>https://github.com/phoenix5980</span>
               </span>
             </div>
           </div>
@@ -158,7 +156,7 @@ export function QuickStart() {
               {t("landing.quickStart.orFork")}
             </span>
             <a
-              href="https://github.com/luckyyyyy/specc.sh"
+              href="https://github.com/phoenix5980"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold

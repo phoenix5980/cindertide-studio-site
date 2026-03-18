@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const GITHUB_URL = "https://github.com/";
+const GITHUB_URL = "https://github.com/phoenix5980";
 
 export function LandingFooter() {
   return (

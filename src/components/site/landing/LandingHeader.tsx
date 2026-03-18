@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useIsMobileOrIOS } from "../../../hooks/useIsMobileOrIOS";
 
 const NAV_ITEMS = [
   { label: "About", id: "about" },
@@ -6,7 +7,7 @@ const NAV_ITEMS = [
   { label: "Vision", id: "vision" },
 ] as const;
 
-const GITHUB_URL = "https://github.com/";
+const GITHUB_URL = "https://github.com/phoenix5980";
 
 function GitHubIcon() {
   return (
@@ -26,6 +27,8 @@ function GitHubIcon() {
 }
 
 export function LandingHeader() {
+  const isMobileOrIOS = useIsMobileOrIOS();
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -35,7 +38,9 @@ export function LandingHeader() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-zinc-950/70 border-b border-zinc-800/70"
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-zinc-800/70 ${
+        isMobileOrIOS ? "bg-zinc-950/88" : "backdrop-blur-xl bg-zinc-950/70"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">

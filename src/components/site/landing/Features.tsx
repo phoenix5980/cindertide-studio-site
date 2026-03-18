@@ -74,7 +74,7 @@ const PROJECTS = [
   {
     title: "FGO TA",
     description:
-      "A turn-attack aggregation and analysis concept for surfacing strategy, composition, and run metadata.",
+      "FGO TA means Turn Attack: an aggregation and analysis concept for surfacing strategy, composition, and run metadata.",
     tags: ["Community Data", "Analytics", "Frontend"],
     Icon: ChartIcon,
     gradient: "from-cyan-500 to-blue-500",
