@@ -5,4 +5,4 @@ Disallow: /login
 Disallow: /register
 Disallow: /unauthorized
 
-Sitemap: https://specc.sh/sitemap.xml
+Sitemap: https://phoenix5980.github.io/cindertide-studio-site/sitemap.xml
