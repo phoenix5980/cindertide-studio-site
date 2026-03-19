@@ -5,35 +5,35 @@ const SITE_URL = import.meta.env.VITE_SITE_URL ?? "https://cindertide.studio";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "CinderTide Studio — AI-native Game Studio" },
+    { title: "CinderTide Studio — AI Applications Portfolio" },
     {
       name: "description",
       content:
-        "CinderTide Studio builds intelligent game-facing products, tools, and interactive systems.",
+        "Designing practical AI systems for knowledge retrieval, analytics, and business workflows.",
     },
     {
       name: "keywords",
       content:
-        "CinderTide Studio, AI-native game studio, game tools, interactive systems, design engineering, experimental interfaces",
+        "CinderTide Studio, AI applications, enterprise AI, banking AI copilot, RAG, SQL analytics, product engineering",
     },
     // Open Graph
     { property: "og:type", content: "website" },
     { property: "og:url", content: SITE_URL },
     { property: "og:site_name", content: "CinderTide Studio" },
-    { property: "og:title", content: "CinderTide Studio — AI-native Game Studio" },
+    { property: "og:title", content: "CinderTide Studio — AI Applications Portfolio" },
     {
       property: "og:description",
       content:
-        "CinderTide Studio builds intelligent game-facing products, tools, and interactive systems.",
+        "Designing practical AI systems for knowledge retrieval, analytics, and business workflows.",
     },
     { property: "og:locale", content: "en_US" },
     // Twitter Card
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: "CinderTide Studio — AI-native Game Studio" },
+    { name: "twitter:title", content: "CinderTide Studio — AI Applications Portfolio" },
     {
       name: "twitter:description",
       content:
-        "We design and engineer polished digital experiences across game tooling, AI-native interfaces, and experimental products.",
+        "Professional AI applications portfolio focused on copilot systems, analytics interfaces, and enterprise engineering.",
     },
     // Canonical
     { tagName: "link", rel: "canonical", href: SITE_URL },

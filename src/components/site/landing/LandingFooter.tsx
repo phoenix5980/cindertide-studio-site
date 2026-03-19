@@ -13,10 +13,10 @@ export function LandingFooter() {
             viewport={{ once: true }}
             className="flex items-center gap-2 text-lg font-bold"
           >
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-red-600 text-white text-sm font-black shadow-sm">
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-white text-sm font-black shadow-sm">
               C
             </span>
-            <span className="bg-gradient-to-r from-orange-300 via-amber-200 to-cyan-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-200 via-slate-200 to-sky-300 bg-clip-text text-transparent">
               CinderTide Studio
             </span>
           </motion.div>

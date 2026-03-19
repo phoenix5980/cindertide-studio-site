@@ -7,7 +7,7 @@ import { WhyVibeCodingFails } from "./WhyVibeCodingFails";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 transition-colors">
+    <div className="min-h-screen bg-slate-950 text-zinc-100 transition-colors">
       <LandingHeader />
       <main className="relative">
         <Hero />

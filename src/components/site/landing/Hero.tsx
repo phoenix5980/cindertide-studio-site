@@ -37,9 +37,7 @@ const MOBILE_HORIZONTAL_LINES: LineConfig[] = [
   { row: 8, duration: 9.1, delay: 1.7 },
 ];
 
-const MOBILE_VERTICAL_LINES: LineConfig[] = [
-  { row: 6, duration: 8.8, delay: 0.8 },
-];
+const MOBILE_VERTICAL_LINES: LineConfig[] = [{ row: 6, duration: 8.8, delay: 0.8 }];
 
 const DESKTOP_NODES: NodeConfig[] = [
   { row: 3, col: 5, delay: 0 },
@@ -58,24 +56,20 @@ const MOBILE_NODES: NodeConfig[] = [
 
 const techItems = [
   {
-    label: "AI-native Systems",
-    color: "text-cyan-300 bg-cyan-500/10 border-cyan-500/30",
+    label: "AI Copilot Systems",
+    color: "text-blue-200 bg-blue-500/10 border-blue-400/30",
   },
   {
-    label: "Game Tools",
-    color: "text-orange-300 bg-orange-500/10 border-orange-500/30",
+    label: "RAG Workflows",
+    color: "text-sky-200 bg-sky-500/10 border-sky-400/30",
   },
   {
-    label: "Interactive Web",
-    color: "text-emerald-300 bg-emerald-500/10 border-emerald-500/30",
+    label: "SQL Analytics",
+    color: "text-indigo-200 bg-indigo-500/10 border-indigo-400/30",
   },
   {
-    label: "Design Engineering",
-    color: "text-violet-300 bg-violet-500/10 border-violet-500/30",
-  },
-  {
-    label: "Experimental Interfaces",
-    color: "text-amber-200 bg-amber-500/10 border-amber-500/30",
+    label: "Enterprise APIs",
+    color: "text-slate-200 bg-slate-500/10 border-slate-400/30",
   },
 ];
 
@@ -84,19 +78,17 @@ export function Hero() {
   const horizontalLines = isMobileOrIOS
     ? MOBILE_HORIZONTAL_LINES
     : DESKTOP_HORIZONTAL_LINES;
-  const verticalLines = isMobileOrIOS
-    ? MOBILE_VERTICAL_LINES
-    : DESKTOP_VERTICAL_LINES;
+  const verticalLines = isMobileOrIOS ? MOBILE_VERTICAL_LINES : DESKTOP_VERTICAL_LINES;
   const gridNodes = isMobileOrIOS ? MOBILE_NODES : DESKTOP_NODES;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 text-zinc-100">
-      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
       <div
         className={`absolute inset-0 ${
           isMobileOrIOS
-            ? "bg-[radial-gradient(circle_at_78%_24%,rgba(6,182,212,0.14),transparent_42%)]"
-            : "bg-[radial-gradient(circle_at_25%_20%,rgba(249,115,22,0.14),transparent_40%),radial-gradient(circle_at_80%_30%,rgba(6,182,212,0.16),transparent_35%)]"
+            ? "bg-[radial-gradient(circle_at_75%_24%,rgba(59,130,246,0.14),transparent_45%)]"
+            : "bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.16),transparent_42%),radial-gradient(circle_at_82%_34%,rgba(14,165,233,0.14),transparent_38%)]"
         }`}
       />
 
@@ -104,33 +96,27 @@ export function Hero() {
         <>
           <FloatingOrb
             reducedMotion
-            className="w-[360px] h-[360px] bg-orange-500/16 -top-20 -left-20"
+            className="w-[340px] h-[340px] bg-blue-500/14 -top-20 -left-20"
             delay={0.2}
           />
           <FloatingOrb
             reducedMotion
-            className="w-[320px] h-[320px] bg-cyan-500/14 top-20 -right-24"
+            className="w-[320px] h-[320px] bg-sky-500/12 top-20 -right-24"
             delay={2}
           />
         </>
       ) : (
         <>
+          <FloatingOrb className="w-[620px] h-[620px] bg-blue-500/16 -top-44 -left-36" delay={0} />
+          <FloatingOrb className="w-[500px] h-[500px] bg-sky-500/14 top-24 -right-40" delay={2} />
           <FloatingOrb
-            className="w-[640px] h-[640px] bg-orange-500/20 -top-44 -left-36"
-            delay={0}
-          />
-          <FloatingOrb
-            className="w-[500px] h-[500px] bg-cyan-500/18 top-24 -right-40"
-            delay={2}
-          />
-          <FloatingOrb
-            className="w-[460px] h-[460px] bg-indigo-500/14 bottom-10 left-1/4"
+            className="w-[440px] h-[440px] bg-indigo-500/12 bottom-10 left-1/4"
             delay={4}
           />
         </>
       )}
 
-      <GridPattern className="text-zinc-400" reducedMotion={isMobileOrIOS} />
+      <GridPattern className="text-slate-400" reducedMotion={isMobileOrIOS} />
 
       {horizontalLines.map((line) => (
         <GridLine
@@ -166,44 +152,45 @@ export function Hero() {
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24">
         <motion.div
-          initial={{ opacity: 0, scale: isMobileOrIOS ? 0.96 : 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: isMobileOrIOS ? 0.42 : 0.5 }}
-          className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/35 bg-cyan-500/10 text-cyan-200 text-sm font-medium"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: isMobileOrIOS ? 0.35 : 0.45 }}
+          className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-400/30 bg-blue-500/10 text-blue-100 text-sm font-medium"
         >
-          <span
-            className={`w-2 h-2 rounded-full bg-cyan-300 ${
-              isMobileOrIOS ? "" : "animate-pulse"
-            }`}
-          />
-          AI-native Game Studio · Systems · Interfaces
+          Enterprise AI Portfolio
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: isMobileOrIOS ? 0.58 : 0.7, delay: 0.05 }}
+          transition={{ duration: isMobileOrIOS ? 0.5 : 0.6, delay: 0.05 }}
           className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight"
         >
-          CinderTide Studio builds intelligent game-facing products, tools, and
-          interactive systems.
+          CinderTide Studio
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: isMobileOrIOS ? 0.58 : 0.7, delay: 0.15 }}
+          transition={{ duration: isMobileOrIOS ? 0.5 : 0.6, delay: 0.12 }}
+          className="mt-4 text-base sm:text-lg text-slate-200 max-w-3xl mx-auto leading-relaxed"
+        >
+          AI Applications · Intelligent Workflows · Product Engineering
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: isMobileOrIOS ? 0.5 : 0.6, delay: 0.18 }}
           className="mt-6 text-base sm:text-lg text-zinc-300 max-w-3xl mx-auto leading-relaxed"
         >
-          We design and engineer polished digital experiences across game
-          tooling, AI-native interfaces, and experimental interactive products -
-          with a focus on clarity, atmosphere, and technical depth.
+          Designing practical AI systems for knowledge retrieval, analytics, and business workflows.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: isMobileOrIOS ? 0.58 : 0.7, delay: 0.25 }}
+          transition={{ duration: isMobileOrIOS ? 0.52 : 0.62, delay: 0.25 }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <motion.button
@@ -213,38 +200,38 @@ export function Hero() {
                 .getElementById("projects")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            whileHover={isMobileOrIOS ? undefined : { scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold shadow-lg shadow-orange-500/30 hover:shadow-orange-500/45 transition-shadow"
+            whileHover={isMobileOrIOS ? undefined : { scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold shadow-lg shadow-blue-900/35 hover:shadow-blue-900/45 transition-shadow"
           >
-            View Projects
+            View Portfolio
           </motion.button>
           <motion.a
             href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"
-            whileHover={isMobileOrIOS ? undefined : { scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-zinc-900/70 text-zinc-100 font-semibold border border-zinc-700 hover:bg-zinc-800 transition-colors shadow-sm"
+            whileHover={isMobileOrIOS ? undefined : { scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-slate-900/70 text-zinc-100 font-semibold border border-slate-700 hover:bg-slate-800 transition-colors shadow-sm"
           >
-            Visit GitHub
+            GitHub Profile
           </motion.a>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: isMobileOrIOS ? 0.62 : 0.8, delay: 0.4 }}
+          transition={{ duration: isMobileOrIOS ? 0.52 : 0.62, delay: 0.35 }}
           className="mt-14 flex flex-wrap items-center justify-center gap-2"
         >
           {techItems.map((item, index) => (
             <motion.span
               key={item.label}
-              initial={isMobileOrIOS ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+              initial={isMobileOrIOS ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
-                duration: isMobileOrIOS ? 0.25 : 0.4,
-                delay: isMobileOrIOS ? 0 : 0.45 + index * 0.06,
+                duration: isMobileOrIOS ? 0.2 : 0.34,
+                delay: isMobileOrIOS ? 0 : 0.4 + index * 0.05,
               }}
               className={`px-3 py-1 rounded-lg text-xs font-semibold border ${item.color}`}
             >
@@ -254,7 +241,7 @@ export function Hero() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-950 to-transparent pointer-events-none" />
     </section>
   );
 }

@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { useIsMobileOrIOS } from "../../../hooks/useIsMobileOrIOS";
 
 const NAV_ITEMS = [
-  { label: "About", id: "about" },
+  { label: "Capabilities", id: "about" },
   { label: "Projects", id: "projects" },
-  { label: "Vision", id: "vision" },
+  { label: "Approach", id: "vision" },
 ] as const;
 
 const GITHUB_URL = "https://github.com/phoenix5980";
@@ -51,10 +51,10 @@ export function LandingHeader() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
           >
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-red-600 text-white text-sm font-black shadow-sm">
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-white text-sm font-black shadow-sm">
               C
             </span>
-            <span className="bg-gradient-to-r from-orange-300 via-amber-200 to-cyan-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-200 via-slate-200 to-sky-300 bg-clip-text text-transparent">
               CinderTide Studio
             </span>
           </motion.button>
@@ -93,9 +93,9 @@ export function LandingHeader() {
             <button
               type="button"
               onClick={() => scrollTo("projects")}
-              className="hidden sm:flex items-center px-4 py-1.5 text-sm font-semibold text-white bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 rounded-lg shadow-sm transition-all"
+              className="hidden sm:flex items-center px-4 py-1.5 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 rounded-lg shadow-sm transition-all"
             >
-              View Projects
+              View Portfolio
             </button>
           </div>
         </div>

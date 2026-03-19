@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 
-function GamepadIcon({ className }: { className?: string }) {
+type IconProps = { className?: string };
+
+function CopilotIcon({ className }: IconProps) {
   return (
     <svg
       aria-hidden="true"
@@ -13,13 +15,14 @@ function GamepadIcon({ className }: { className?: string }) {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6.75 9.75h10.5A4.5 4.5 0 0121.75 14v.75a3 3 0 01-3 3h-.65a2.25 2.25 0 01-2.122-1.5l-.38-1.125a1.5 1.5 0 00-1.423-1.02h-4.35a1.5 1.5 0 00-1.423 1.02l-.38 1.125a2.25 2.25 0 01-2.122 1.5H5.25a3 3 0 01-3-3V14a4.5 4.5 0 014.5-4.25zM7.5 12h3m-1.5-1.5v3m7.5 0h.015v.015H16.5V13.5zm1.5-1.5h.015v.015H18V12z"
+        d="M4 8a3 3 0 013-3h10a3 3 0 013 3v7a3 3 0 01-3 3h-4l-3 3v-3H7a3 3 0 01-3-3V8z"
       />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8 11h8M8 14h5" />
     </svg>
   );
 }
 
-function LayoutIcon({ className }: { className?: string }) {
+function BookIcon({ className }: IconProps) {
   return (
     <svg
       aria-hidden="true"
@@ -32,13 +35,14 @@ function LayoutIcon({ className }: { className?: string }) {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3.75 5.25h16.5v13.5H3.75V5.25zm5.25 0v13.5"
+        d="M4 6.5A2.5 2.5 0 016.5 4H20v14.5H6.5A2.5 2.5 0 004 21V6.5z"
       />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h8M8 11h8" />
     </svg>
   );
 }
 
-function CpuIcon({ className }: { className?: string }) {
+function ChartIcon({ className }: IconProps) {
   return (
     <svg
       aria-hidden="true"
@@ -48,103 +52,124 @@ function CpuIcon({ className }: { className?: string }) {
       stroke="currentColor"
       strokeWidth={1.5}
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M9 9h6v6H9V9zm-3 3H3m18 0h-3M12 3v3m0 15v-3m5.657-10.657l2.121-2.121M4.222 19.778l2.121-2.121m0-11.314L4.222 4.222m15.556 15.556-2.121-2.121M7.5 4.5h9A3 3 0 0119.5 7.5v9a3 3 0 01-3 3h-9a3 3 0 01-3-3v-9a3 3 0 013-3z"
-      />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 3v18h18" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M7 14l3-3 3 2 4-5" />
     </svg>
   );
 }
 
-const FOCUS_AREAS = [
+function ApiIcon({ className }: IconProps) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8 7l-4 5 4 5M16 7l4 5-4 5" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M14 4l-4 16" />
+    </svg>
+  );
+}
+
+const CAPABILITIES = [
   {
-    title: "Game experiences",
-    description: "Interactive mechanics, player-facing flows, and tooling loops that stay practical.",
-    Icon: GamepadIcon,
-    color: "from-orange-500 to-red-500",
-    iconTone: "text-orange-300 bg-orange-500/15",
+    title: "AI Copilot Systems",
+    description:
+      "Designing business-facing copilots for multi-step operational workflows and enterprise decision support.",
+    Icon: CopilotIcon,
+    color: "from-blue-600 to-sky-500",
+    iconTone: "text-blue-200 bg-blue-500/15",
   },
   {
-    title: "Interface systems",
-    description: "Design systems and product surfaces with strong hierarchy, motion intent, and readability.",
-    Icon: LayoutIcon,
-    color: "from-cyan-500 to-blue-500",
-    iconTone: "text-cyan-300 bg-cyan-500/15",
+    title: "RAG Knowledge Systems",
+    description:
+      "Building retrieval pipelines for policy, SOP, and domain documents with grounded, traceable responses.",
+    Icon: BookIcon,
+    color: "from-sky-600 to-indigo-500",
+    iconTone: "text-sky-200 bg-sky-500/15",
   },
   {
-    title: "AI-native tooling",
-    description: "Workflows that use AI as infrastructure while keeping control, quality, and observability.",
-    Icon: CpuIcon,
-    color: "from-violet-500 to-indigo-500",
-    iconTone: "text-violet-300 bg-violet-500/15",
+    title: "Data Analytics Interfaces",
+    description:
+      "Creating query-driven analytics surfaces that translate business questions into actionable insights.",
+    Icon: ChartIcon,
+    color: "from-indigo-600 to-blue-500",
+    iconTone: "text-indigo-200 bg-indigo-500/15",
+  },
+  {
+    title: "Backend & API Engineering",
+    description:
+      "Implementing robust service layers, integration contracts, and safety guardrails for production AI applications.",
+    Icon: ApiIcon,
+    color: "from-slate-600 to-blue-500",
+    iconTone: "text-slate-200 bg-slate-500/20",
   },
 ] as const;
 
 export function WhyVibeCodingFails() {
   return (
-    <section id="about" className="relative py-24 overflow-hidden bg-zinc-950">
+    <section id="about" className="relative py-24 overflow-hidden bg-slate-950">
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
-            "linear-gradient(to right,rgba(59,130,246,0.5) 1px,transparent 1px),linear-gradient(to bottom,rgba(59,130,246,0.5) 1px,transparent 1px)",
+            "linear-gradient(to right,rgba(96,165,250,0.4) 1px,transparent 1px),linear-gradient(to bottom,rgba(96,165,250,0.4) 1px,transparent 1px)",
           backgroundSize: "48px 48px",
         }}
       />
-      <div className="absolute -top-12 right-0 w-96 h-96 rounded-full bg-violet-500/8 blur-3xl pointer-events-none" />
+      <div className="absolute -top-12 right-0 w-96 h-96 rounded-full bg-blue-500/8 blur-2xl pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45 }}
           className="flex justify-center"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/35 bg-violet-500/10 text-violet-200 text-sm font-medium">
-            <span className="w-2 h-2 rounded-full bg-violet-300" />
-            About CinderTide
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-400/30 bg-blue-500/10 text-blue-100 text-sm font-medium">
+            Capabilities
           </span>
         </motion.div>
 
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55, delay: 0.05 }}
-          className="mt-4 text-center text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-100"
-        >
-          About CinderTide
-        </motion.h2>
-
-        <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.55, delay: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.04 }}
+          className="mt-4 text-center text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-100"
+        >
+          Capabilities
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.08 }}
           className="mt-4 text-center text-zinc-300 max-w-3xl mx-auto leading-relaxed"
         >
-          CinderTide Studio explores the intersection of game experiences,
-          interface systems, and AI-native tooling. We care about technical
-          sharpness, visual atmosphere, and products that feel deliberate at
-          every layer.
+          Professional product engineering across enterprise AI systems, analytics workflows, and integration-ready
+          application architecture.
         </motion.p>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-5">
-          {FOCUS_AREAS.map(({ title, description, Icon, color, iconTone }, index) => (
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {CAPABILITIES.map(({ title, description, Icon, color, iconTone }, index) => (
             <motion.div
               key={title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: 0.1 + index * 0.08 }}
-              className="group relative flex flex-col gap-3 p-6 rounded-2xl border border-zinc-800 bg-zinc-900/70 shadow-sm"
+              transition={{ duration: 0.4, delay: 0.08 + index * 0.06 }}
+              className="group relative flex flex-col gap-3 p-6 rounded-2xl border border-slate-700 bg-slate-900/75"
             >
               <div
-                className={`absolute -inset-px bg-gradient-to-br ${color} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}
+                className={`absolute -inset-px bg-gradient-to-br ${color} rounded-2xl opacity-0 group-hover:opacity-15 transition-opacity duration-300`}
               />
-              <div className="relative w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-zinc-700">
+              <div className="relative w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-slate-600">
                 <div className={`absolute inset-0 rounded-xl ${iconTone}`} />
                 <Icon className="relative w-5 h-5" />
               </div>

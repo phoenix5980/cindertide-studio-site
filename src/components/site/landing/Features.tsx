@@ -1,9 +1,19 @@
 import { motion } from "framer-motion";
-import React, { useRef } from "react";
 
 type IconProps = { className?: string };
 
-function SparkIcon({ className }: IconProps) {
+type Project = {
+  title: string;
+  description: string;
+  tags: string[];
+  highlights?: string[];
+  whyItMatters?: string;
+  Icon: ({ className }: IconProps) => JSX.Element;
+  gradient: string;
+  featured?: boolean;
+};
+
+function ShieldChartIcon({ className }: IconProps) {
   return (
     <svg
       aria-hidden="true"
@@ -16,13 +26,14 @@ function SparkIcon({ className }: IconProps) {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M13.5 3l1.8 3.6L19 8.4l-3.7 1.8L13.5 14l-1.8-3.8L8 8.4l3.7-1.8L13.5 3zM6 13.5l.9 1.8L8.7 16l-1.8.8L6 18.6l-.9-1.8-1.8-.8 1.8-.7L6 13.5zM18 14.2l1.1 2.1 2.1 1-2.1 1-1.1 2.2-1-2.2-2.1-1 2.1-1 1-2.1z"
+        d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"
       />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.5 13.5l2-2 2 1.5 3-3" />
     </svg>
   );
 }
 
-function ChartIcon({ className }: IconProps) {
+function DatabaseIcon({ className }: IconProps) {
   return (
     <svg
       aria-hidden="true"
@@ -32,16 +43,14 @@ function ChartIcon({ className }: IconProps) {
       stroke="currentColor"
       strokeWidth={1.5}
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M3 3v18h18M7 15l3-3 3 2 4-5"
-      />
+      <ellipse cx="12" cy="5.5" rx="7" ry="2.5" />
+      <path d="M5 5.5v6c0 1.38 3.13 2.5 7 2.5s7-1.12 7-2.5v-6" />
+      <path d="M5 11.5v6c0 1.38 3.13 2.5 7 2.5s7-1.12 7-2.5v-6" />
     </svg>
   );
 }
 
-function FlaskIcon({ className }: IconProps) {
+function WorkflowIcon({ className }: IconProps) {
   return (
     <svg
       aria-hidden="true"
@@ -51,113 +60,105 @@ function FlaskIcon({ className }: IconProps) {
       stroke="currentColor"
       strokeWidth={1.5}
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M10.5 3h3M9 3h6M10.5 3v5.2L5.4 16.4A3 3 0 008 21h8a3 3 0 002.6-4.6l-5.1-8.2V3"
-      />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M8 16h8" />
+      <rect x="3" y="4" width="7" height="5" rx="1" />
+      <rect x="14" y="4" width="7" height="5" rx="1" />
+      <rect x="8.5" y="15" width="7" height="5" rx="1" />
+      <path d="M10 6.5h4M12 9v6" />
     </svg>
   );
 }
 
-const PROJECTS = [
+const PROJECTS: Project[] = [
   {
-    title: "TRISMEGISTUS",
+    title: "Banking Knowledge & Data Copilot",
     description:
-      "AI-assisted combat and farming workflow concepts inspired by game decision systems.",
-    tags: ["AI Agents", "Gameplay Systems", "Tooling"],
-    Icon: SparkIcon,
-    gradient: "from-orange-500 to-red-500",
-    spotlightColor: "249, 115, 22",
+      "A banking-oriented AI copilot prototype for policy retrieval, analytics queries, and transparent workflow decisions.",
+    highlights: [
+      "RAG-based policy & SOP question answering",
+      "SQL-powered analytics queries",
+      "Explicit agent routing (RAG / SQL / clarification)",
+      "Readonly safety controls",
+    ],
+    whyItMatters:
+      "Unifies policy lookup and data analysis in one interface while keeping routing transparent and operational risk controlled.",
+    tags: ["RAG", "Agent Routing", "SQL Analytics", "Safety Guardrails"],
+    Icon: ShieldChartIcon,
+    gradient: "from-blue-600 to-sky-500",
+    featured: true,
   },
   {
-    title: "FGO TA",
+    title: "Enterprise Workflow Assistant",
     description:
-      "FGO TA means Turn Attack: an aggregation and analysis concept for surfacing strategy, composition, and run metadata.",
-    tags: ["Community Data", "Analytics", "Frontend"],
-    Icon: ChartIcon,
-    gradient: "from-cyan-500 to-blue-500",
-    spotlightColor: "6, 182, 212",
+      "An internal operations assistant for triage, escalation paths, and compliance-aware task orchestration.",
+    tags: ["Workflow Automation", "Auditability", "Internal Tools"],
+    Icon: WorkflowIcon,
+    gradient: "from-slate-600 to-blue-500",
   },
   {
-    title: "Cinder Experiments",
+    title: "Analytics Interface System",
     description:
-      "A lab space for prototyping dark UI systems, atmospheric landing pages, and game-adjacent product ideas.",
-    tags: ["Motion Design", "Prototyping", "Web Systems"],
-    Icon: FlaskIcon,
-    gradient: "from-violet-500 to-indigo-500",
-    spotlightColor: "139, 92, 246",
+      "A modular analytics UI architecture for KPI exploration, executive reporting, and decision support workflows.",
+    tags: ["Data UX", "Dashboards", "Product Engineering"],
+    Icon: DatabaseIcon,
+    gradient: "from-indigo-600 to-blue-500",
   },
-] as const;
+];
 
 function ProjectCard({
   title,
   description,
   tags,
+  highlights,
+  whyItMatters,
   Icon,
   gradient,
-  spotlightColor,
-}: (typeof PROJECTS)[number]) {
+  featured,
+}: Project) {
   return (
     <motion.div
-      whileHover={{ y: -6, scale: 1.02 }}
-      transition={{ duration: 0.2 }}
-      className="feature-card relative h-full rounded-2xl"
-      style={
-        {
-          "--spotlight-color": spotlightColor,
-          "--spotlight-x": "0px",
-          "--spotlight-y": "0px",
-          "--spotlight-opacity": "0",
-        } as React.CSSProperties
-      }
+      whileHover={{ y: -3 }}
+      transition={{ duration: 0.18 }}
+      className={`relative h-full rounded-2xl border ${
+        featured
+          ? "border-blue-400/40 bg-slate-900/90"
+          : "border-slate-700/80 bg-slate-900/75"
+      }`}
     >
-      <div
-        className="absolute inset-0 rounded-2xl pointer-events-none"
-        style={{
-          background: `linear-gradient(135deg, rgba(${spotlightColor}, 0.26), rgba(${spotlightColor}, 0.1))`,
-        }}
-      />
+      <div className="absolute inset-[1px] rounded-2xl bg-gradient-to-b from-white/[0.05] to-transparent pointer-events-none" />
 
-      <div
-        className="spotlight-layer absolute inset-0 rounded-2xl pointer-events-none"
-        style={
-          {
-            opacity: "var(--spotlight-opacity)",
-            background: `radial-gradient(600px circle at var(--spotlight-x) var(--spotlight-y), rgba(var(--spotlight-color), 1) 0%, rgba(var(--spotlight-color), 0.9) 15%, rgba(var(--spotlight-color), 0.6) 30%, transparent 50%)`,
-            WebkitMask:
-              "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-            WebkitMaskComposite: "xor",
-            maskComposite: "exclude",
-            padding: "2px",
-          } as React.CSSProperties
-        }
-      />
-
-      <div className="absolute inset-[2px] rounded-[14px] bg-zinc-950/85 backdrop-blur-sm" />
-      <div
-        className="spotlight-layer absolute inset-[2px] rounded-[14px] pointer-events-none"
-        style={
-          {
-            opacity: "var(--spotlight-opacity)",
-            background: `radial-gradient(420px circle at calc(var(--spotlight-x) - 2px) calc(var(--spotlight-y) - 2px), rgba(var(--spotlight-color), 0.22), transparent 50%)`,
-          } as React.CSSProperties
-        }
-      />
+      <div className={`absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-gradient-to-r ${gradient}`} />
 
       <div className="relative z-20 p-6 flex flex-col h-full">
-        <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${gradient} shadow-lg`}>
+        <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${gradient} shadow-lg shadow-blue-900/35`}>
           <Icon className="w-6 h-6 text-white" />
         </div>
+
         <h3 className="mt-4 text-xl font-semibold text-zinc-100">{title}</h3>
-        <p className="mt-2 text-zinc-400 leading-relaxed text-sm">{description}</p>
+        <p className="mt-3 text-zinc-300 leading-relaxed text-sm">{description}</p>
+
+        {highlights ? (
+          <ul className="mt-4 space-y-2 text-sm text-zinc-300">
+            {highlights.map((item) => (
+              <li key={item} className="flex items-start gap-2">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-blue-300" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+
+        {whyItMatters ? (
+          <div className="mt-5 rounded-xl border border-blue-400/25 bg-blue-500/10 p-3">
+            <p className="text-xs font-semibold tracking-wide uppercase text-blue-200">Why it matters</p>
+            <p className="mt-1 text-sm text-blue-100/90 leading-relaxed">{whyItMatters}</p>
+          </div>
+        ) : null}
 
         <div className="mt-5 flex flex-wrap gap-2">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border border-zinc-700 bg-zinc-900/80 text-zinc-300"
+              className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border border-slate-600 bg-slate-800/80 text-slate-200"
             >
               {tag}
             </span>
@@ -169,88 +170,37 @@ function ProjectCard({
 }
 
 export function Features() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const updateSpotlight = (clientX: number, clientY: number) => {
-      for (const card of Array.from(
-        container.querySelectorAll<HTMLElement>(".feature-card"),
-      )) {
-        const rect = card.getBoundingClientRect();
-        const relativeX = clientX - rect.left;
-        const relativeY = clientY - rect.top;
-        const dx = relativeX - rect.width / 2;
-        const dy = relativeY - rect.height / 2;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const maxDistance = 350;
-
-        if (distance < maxDistance) {
-          const opacity = Math.max(0.3, 1 - distance / maxDistance);
-          card.style.setProperty("--spotlight-x", `${relativeX}px`);
-          card.style.setProperty("--spotlight-y", `${relativeY}px`);
-          card.style.setProperty("--spotlight-opacity", opacity.toString());
-        } else {
-          card.style.setProperty("--spotlight-opacity", "0");
-        }
-      }
-    };
-
-    const handleMouseMove = (event: MouseEvent) =>
-      updateSpotlight(event.clientX, event.clientY);
-    const handleMouseLeave = () => {
-      for (const card of Array.from(
-        container.querySelectorAll<HTMLElement>(".feature-card"),
-      )) {
-        card.style.setProperty("--spotlight-opacity", "0");
-      }
-    };
-
-    container.addEventListener("mousemove", handleMouseMove);
-    container.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      container.removeEventListener("mousemove", handleMouseMove);
-      container.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, []);
-
   return (
     <section id="projects" className="relative py-24 sm:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950" />
-      <div className="absolute top-20 left-0 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
+      <div className="absolute top-24 left-0 w-80 h-80 bg-blue-500/8 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute bottom-10 right-0 w-96 h-96 bg-indigo-500/8 rounded-full blur-2xl pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-14"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-zinc-100">
-            Selected Projects
+            Featured AI Applications
           </h2>
           <p className="mt-4 text-lg text-zinc-400 max-w-3xl mx-auto">
-            A small set of experiments and products exploring game systems,
-            interface design, AI workflows, and player-facing tools.
+            Portfolio work focused on enterprise AI systems, analytics workflows, and production-oriented engineering.
           </p>
         </motion.div>
 
-        <div
-          ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PROJECTS.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.42, delay: index * 0.07 }}
+              className={project.featured ? "md:col-span-2 lg:col-span-2" : ""}
             >
               <ProjectCard {...project} />
             </motion.div>

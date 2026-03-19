@@ -5,11 +5,11 @@ const GITHUB_URL = "https://github.com/phoenix5980";
 export function LandingCTA() {
   return (
     <section id="vision" className="relative py-24 sm:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-zinc-950 via-indigo-950 to-zinc-900" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
 
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-violet-500/18 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-cyan-400/14 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[620px] h-[620px] bg-orange-400/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/12 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[620px] h-[620px] bg-slate-400/8 rounded-full blur-2xl pointer-events-none" />
 
       <svg
         aria-hidden="true"
@@ -42,15 +42,15 @@ export function LandingCTA() {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-zinc-200 border border-white/20 mb-5">
-            Vision
+            Approach
           </span>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Vision
+            Delivery Approach
           </h2>
           <p className="mt-4 text-lg text-zinc-200 max-w-3xl mx-auto leading-relaxed">
-            We want to build products that feel calm, intelligent, and alive -
-            interfaces with strong identity, careful motion, and systems that
-            support complex interaction without becoming visually chaotic.
+            We focus on practical AI applications that connect knowledge
+            systems, analytics workflows, and reliable engineering foundations
+            for business teams.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -61,21 +61,21 @@ export function LandingCTA() {
                   .getElementById("projects")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-zinc-900 font-semibold shadow-lg shadow-black/30 hover:bg-zinc-100 transition-colors"
             >
-              View Projects
+              View Featured Work
             </motion.button>
             <motion.a
               href={GITHUB_URL}
               target="_blank"
               rel="noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white/10 text-white font-semibold border border-white/30 hover:bg-white/20 transition-colors backdrop-blur-sm"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white/10 text-white font-semibold border border-white/30 hover:bg-white/20 transition-colors"
             >
-              Visit GitHub
+              Contact / GitHub
             </motion.a>
           </div>
         </motion.div>
