@@ -131,6 +131,83 @@ export const copy = {
       ],
       liveDemoLabel: "View Live Demo",
       liveDemoUrl: "",
+      architectureFlow: {
+        user: {
+          title: "User Query",
+          description:
+            "Natural-language request from service or operations teams.",
+        },
+        router: {
+          title: "Intent Router",
+          description:
+            "Classifies intent and routes the query to the correct execution path.",
+        },
+        final: {
+          title: "Final Response",
+          description:
+            "Returns an answer with transparent routing and evidence context.",
+        },
+      },
+      demo: {
+        inputLabel: "Try a query",
+        inputPlaceholder:
+          "Type a business question or choose a preset to run the simulated pipeline.",
+        presetsLabel: "Presets",
+        runButton: "Run Simulation",
+        runningButton: "Running...",
+        emptyState:
+          "Run a preset or enter a query to simulate how the copilot executes.",
+        intentDetected: "Detected intent",
+        intentLabels: {
+          rag: "RAG",
+          sql: "SQL",
+          safety: "Safety",
+          clarification: "Clarification",
+        },
+        steps: {
+          router: "Router",
+          rag: "RAG",
+          sql: "SQL Tool",
+          safety: "Safety Layer",
+          clarification: "Clarification",
+          final: "Final Response",
+        },
+        presets: [
+          { label: "RAG", query: "开户需要哪些材料？" },
+          { label: "SQL", query: "统计近7天失败交易数" },
+          { label: "Safety", query: "删除所有客户数据" },
+        ],
+        rag: {
+          retrieving: "Retrieving policy and SOP documents...",
+          citationsTitle: "Citations",
+          citations: [
+            "[Policy-101] Account Activation Checklist §2.1",
+            "[SOP-204] KYC Material Verification Process §1.3",
+          ],
+          answer:
+            "Before account activation, collect identity proof, address verification, and source-of-funds documents, then complete KYC validation.",
+        },
+        sql: {
+          generating: "Generating readonly SQL for analytics...",
+          sqlTitle: "Generated SQL",
+          sql: "SELECT DATE(txn_time) AS day, COUNT(*) AS failed_count\nFROM transactions\nWHERE status = 'FAILED' AND txn_time >= CURRENT_DATE - INTERVAL '7 DAY'\nGROUP BY DATE(txn_time)\nORDER BY day;",
+          result:
+            "Query result: 482 failed transactions in the last 7 days, peaking on Tuesday.",
+          summary:
+            "Failure volume increased 12% week-over-week. Recommend checking transfer timeout and retry logic.",
+        },
+        safety: {
+          blocked: "Request blocked by safety layer.",
+          reason:
+            "Destructive operations (DELETE/DROP/TRUNCATE) are not allowed in readonly mode.",
+        },
+        clarification: {
+          needMore:
+            "The request is ambiguous and cannot be routed confidently.",
+          question:
+            "Do you want policy guidance, KPI statistics, or ticket-level details?",
+        },
+      },
     },
   },
 
@@ -259,6 +336,76 @@ export const copy = {
       ],
       liveDemoLabel: "查看在线演示",
       liveDemoUrl: "",
+      architectureFlow: {
+        user: {
+          title: "用户问题",
+          description: "来自客服或运营人员的自然语言业务请求。",
+        },
+        router: {
+          title: "意图路由器",
+          description:
+            "识别问题意图，并将请求分发到最合适的执行路径。",
+        },
+        final: {
+          title: "最终回复",
+          description:
+            "输出带有路由说明与依据信息的可解释结果。",
+        },
+      },
+      demo: {
+        inputLabel: "输入问题",
+        inputPlaceholder: "输入业务问题，或选择预设用例运行模拟流程。",
+        presetsLabel: "预设用例",
+        runButton: "运行模拟",
+        runningButton: "运行中...",
+        emptyState: "请选择预设，或输入问题后运行，查看 Copilot 执行过程。",
+        intentDetected: "识别意图",
+        intentLabels: {
+          rag: "RAG",
+          sql: "SQL",
+          safety: "安全拦截",
+          clarification: "澄清",
+        },
+        steps: {
+          router: "Router",
+          rag: "RAG",
+          sql: "SQL Tool",
+          safety: "Safety Layer",
+          clarification: "Clarification",
+          final: "Final Response",
+        },
+        presets: [
+          { label: "RAG", query: "开户需要哪些材料？" },
+          { label: "SQL", query: "统计近7天失败交易数" },
+          { label: "Safety", query: "删除所有客户数据" },
+        ],
+        rag: {
+          retrieving: "正在检索政策与 SOP 文档...",
+          citationsTitle: "引用依据",
+          citations: [
+            "[Policy-101] 账户激活材料清单 §2.1",
+            "[SOP-204] KYC 材料核验流程 §1.3",
+          ],
+          answer:
+            "账户激活前需提交身份证明、地址证明与资金来源材料，并完成 KYC 校验流程。",
+        },
+        sql: {
+          generating: "正在生成只读 SQL 分析语句...",
+          sqlTitle: "生成 SQL",
+          sql: "SELECT DATE(txn_time) AS day, COUNT(*) AS failed_count\nFROM transactions\nWHERE status = 'FAILED' AND txn_time >= CURRENT_DATE - INTERVAL '7 DAY'\nGROUP BY DATE(txn_time)\nORDER BY day;",
+          result: "查询结果：近7天失败交易共 482 笔，其中周二达到峰值。",
+          summary:
+            "失败交易量环比上周上升 12%，建议重点排查转账超时与重试链路。",
+        },
+        safety: {
+          blocked: "请求已被安全层拦截。",
+          reason: "只读模式下禁止 DELETE / DROP / TRUNCATE 等破坏性操作。",
+        },
+        clarification: {
+          needMore: "当前问题意图不够明确，无法直接执行。",
+          question: "请确认你需要的是制度问答、KPI统计，还是工单明细分析？",
+        },
+      },
     },
   },
 };
