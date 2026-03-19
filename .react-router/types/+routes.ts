@@ -14,6 +14,9 @@ type Pages = {
   "/": {
     params: {};
   };
+  "/projects/banking-copilot": {
+    params: {};
+  };
   "/*": {
     params: {
       "*": string;
@@ -24,11 +27,15 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/*";
+    page: "/" | "/projects/banking-copilot" | "/*";
   };
   "routes/home/route.tsx": {
     id: "routes/home/route";
     page: "/";
+  };
+  "routes/projects/banking-copilot/route.tsx": {
+    id: "routes/projects/banking-copilot/route";
+    page: "/projects/banking-copilot";
   };
   "routes/catchall/route.tsx": {
     id: "routes/catchall/route";
@@ -39,5 +46,6 @@ type RouteFiles = {
 type RouteModules = {
   "root": typeof import("./src/root.tsx");
   "routes/home/route": typeof import("./src/routes/home/route.tsx");
+  "routes/projects/banking-copilot/route": typeof import("./src/routes/projects/banking-copilot/route.tsx");
   "routes/catchall/route": typeof import("./src/routes/catchall/route.tsx");
 };

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import type { ComponentType } from "react";
+import { Link } from "react-router";
 import { copy } from "../../../content/copy";
 
 type IconProps = { className?: string };
@@ -15,6 +16,7 @@ type Project = {
   Icon: ComponentType<IconProps>;
   gradient: string;
   featured?: boolean;
+  href?: string;
 };
 
 function ShieldChartIcon({ className }: IconProps) {
@@ -101,6 +103,7 @@ function getProjects(lang: Lang): Project[] {
       Icon: ShieldChartIcon,
       gradient: "from-blue-600 to-sky-500",
       featured: true,
+      href: "/projects/banking-copilot",
     },
     {
       title: t.assistantTitle,
@@ -231,7 +234,18 @@ export function Features({ lang }: { lang: Lang }) {
               transition={{ duration: 0.42 }}
               className="w-full"
             >
-              <ProjectCard {...featuredProject} lang={lang} />
+              {featuredProject.href ? (
+                <Link
+                  to={featuredProject.href}
+                  aria-label={t.bankingCopilot.cardLink}
+                  title={t.bankingCopilot.cardLink}
+                  className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-2xl"
+                >
+                  <ProjectCard {...featuredProject} lang={lang} />
+                </Link>
+              ) : (
+                <ProjectCard {...featuredProject} lang={lang} />
+              )}
             </motion.div>
           ) : null}
 
