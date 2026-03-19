@@ -1,8 +1,28 @@
 import { motion } from "framer-motion";
 
 const GITHUB_URL = "https://github.com/phoenix5980";
+type Lang = "en" | "zh";
 
-export function LandingCTA() {
+export function LandingCTA({ lang }: { lang: Lang }) {
+  const text =
+    lang === "zh"
+      ? {
+          badge: "方法论",
+          title: "交付方法",
+          description:
+            "聚焦可落地的AI应用，把知识系统、分析流程和稳定工程能力整合为可交付产品。",
+          primary: "查看核心项目",
+          secondary: "联系 / GitHub",
+        }
+      : {
+          badge: "Approach",
+          title: "Delivery Approach",
+          description:
+            "We focus on practical AI applications that connect knowledge systems, analytics workflows, and reliable engineering foundations for business teams.",
+          primary: "View Featured Work",
+          secondary: "Contact / GitHub",
+        };
+
   return (
     <section id="vision" className="relative py-24 sm:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
@@ -42,15 +62,13 @@ export function LandingCTA() {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-zinc-200 border border-white/20 mb-5">
-            Approach
+            {text.badge}
           </span>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Delivery Approach
+            {text.title}
           </h2>
           <p className="mt-4 text-lg text-zinc-200 max-w-3xl mx-auto leading-relaxed">
-            We focus on practical AI applications that connect knowledge
-            systems, analytics workflows, and reliable engineering foundations
-            for business teams.
+            {text.description}
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -65,7 +83,7 @@ export function LandingCTA() {
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-zinc-900 font-semibold shadow-lg shadow-black/30 hover:bg-zinc-100 transition-colors"
             >
-              View Featured Work
+              {text.primary}
             </motion.button>
             <motion.a
               href={GITHUB_URL}
@@ -75,7 +93,7 @@ export function LandingCTA() {
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white/10 text-white font-semibold border border-white/30 hover:bg-white/20 transition-colors"
             >
-              Contact / GitHub
+              {text.secondary}
             </motion.a>
           </div>
         </motion.div>

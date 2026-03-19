@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
+import { copy } from "../../../content/copy";
 
 const GITHUB_URL = "https://github.com/phoenix5980";
+type Lang = "en" | "zh";
 
-export function LandingFooter() {
+export function LandingFooter({ lang }: { lang: Lang }) {
+  const t = copy[lang];
+
   return (
     <footer className="relative py-12 border-t border-zinc-800 bg-zinc-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,6 +23,7 @@ export function LandingFooter() {
             <span className="bg-gradient-to-r from-blue-200 via-slate-200 to-sky-300 bg-clip-text text-transparent">
               CinderTide Studio
             </span>
+            <span className="ml-2 text-sm font-medium text-zinc-400">{t.footer}</span>
           </motion.div>
 
           <div className="flex items-center gap-6 text-sm">
@@ -35,7 +40,7 @@ export function LandingFooter() {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="text-zinc-400 hover:text-zinc-100 transition-colors"
             >
-              Back to top
+              {lang === "zh" ? "返回顶部" : "Back to top"}
             </button>
           </div>
         </div>

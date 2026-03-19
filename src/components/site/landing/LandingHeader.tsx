@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
+import { copy } from "../../../content/copy";
 import { useIsMobileOrIOS } from "../../../hooks/useIsMobileOrIOS";
 
-const NAV_ITEMS = [
-  { label: "Capabilities", id: "about" },
-  { label: "Projects", id: "projects" },
-  { label: "Approach", id: "vision" },
-] as const;
+type Lang = "en" | "zh";
+type LandingHeaderProps = {
+  lang: Lang;
+  setLang: (lang: Lang) => void;
+};
 
 const GITHUB_URL = "https://github.com/phoenix5980";
 
@@ -26,8 +27,14 @@ function GitHubIcon() {
   );
 }
 
-export function LandingHeader() {
+export function LandingHeader({ lang, setLang }: LandingHeaderProps) {
   const isMobileOrIOS = useIsMobileOrIOS();
+  const t = copy[lang];
+  const navItems = [
+    { label: t.navCapabilities, id: "about" },
+    { label: t.navProjects, id: "projects" },
+    { label: t.navApproach, id: "vision" },
+  ] as const;
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -60,7 +67,7 @@ export function LandingHeader() {
           </motion.button>
 
           <nav className="hidden md:flex items-center gap-1">
-            {NAV_ITEMS.map((item) => (
+            {navItems.map((item) => (
               <button
                 key={item.id}
                 type="button"
@@ -81,6 +88,30 @@ export function LandingHeader() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <div className="inline-flex items-center rounded-md border border-zinc-700/80 bg-zinc-900/70 p-0.5">
+              <button
+                type="button"
+                onClick={() => setLang("en")}
+                className={`w-10 rounded px-0 py-1 text-xs font-semibold transition-colors ${
+                  lang === "en"
+                    ? "bg-blue-500/30 text-blue-100"
+                    : "text-zinc-400 hover:text-zinc-100"
+                }`}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                onClick={() => setLang("zh")}
+                className={`w-10 rounded px-0 py-1 text-xs font-semibold transition-colors ${
+                  lang === "zh"
+                    ? "bg-blue-500/30 text-blue-100"
+                    : "text-zinc-400 hover:text-zinc-100"
+                }`}
+              >
+                中文
+              </button>
+            </div>
             <a
               href={GITHUB_URL}
               target="_blank"

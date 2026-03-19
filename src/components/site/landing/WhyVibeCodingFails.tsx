@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
+import { copy } from "../../../content/copy";
 
 type IconProps = { className?: string };
+type Lang = "en" | "zh";
 
 function CopilotIcon({ className }: IconProps) {
   return (
@@ -74,42 +76,52 @@ function ApiIcon({ className }: IconProps) {
   );
 }
 
-const CAPABILITIES = [
-  {
-    title: "AI Copilot Systems",
-    description:
-      "Designing business-facing copilots for multi-step operational workflows and enterprise decision support.",
-    Icon: CopilotIcon,
-    color: "from-blue-600 to-sky-500",
-    iconTone: "text-blue-200 bg-blue-500/15",
-  },
-  {
-    title: "RAG Knowledge Systems",
-    description:
-      "Building retrieval pipelines for policy, SOP, and domain documents with grounded, traceable responses.",
-    Icon: BookIcon,
-    color: "from-sky-600 to-indigo-500",
-    iconTone: "text-sky-200 bg-sky-500/15",
-  },
-  {
-    title: "Data Analytics Interfaces",
-    description:
-      "Creating query-driven analytics surfaces that translate business questions into actionable insights.",
-    Icon: ChartIcon,
-    color: "from-indigo-600 to-blue-500",
-    iconTone: "text-indigo-200 bg-indigo-500/15",
-  },
-  {
-    title: "Backend & API Engineering",
-    description:
-      "Implementing robust service layers, integration contracts, and safety guardrails for production AI applications.",
-    Icon: ApiIcon,
-    color: "from-slate-600 to-blue-500",
-    iconTone: "text-slate-200 bg-slate-500/20",
-  },
-] as const;
+export function WhyVibeCodingFails({ lang }: { lang: Lang }) {
+  const t = copy[lang];
+  const capabilityDescriptions =
+    lang === "zh"
+      ? [
+          "面向业务流程设计多步骤AI Copilot系统。",
+          "构建可追溯的检索增强知识问答能力。",
+          "打造自然语言驱动的数据分析交互界面。",
+          "实现稳定后端服务与企业级API集成。",
+        ]
+      : [
+          "Designing business-facing copilots for multi-step operational workflows.",
+          "Building grounded and traceable retrieval knowledge systems.",
+          "Creating natural-language analytics interfaces for business metrics.",
+          "Implementing robust backend services and enterprise API integrations.",
+        ];
 
-export function WhyVibeCodingFails() {
+  const capabilityStyles = [
+    {
+      Icon: CopilotIcon,
+      color: "from-blue-600 to-sky-500",
+      iconTone: "text-blue-200 bg-blue-500/15",
+    },
+    {
+      Icon: BookIcon,
+      color: "from-sky-600 to-indigo-500",
+      iconTone: "text-sky-200 bg-sky-500/15",
+    },
+    {
+      Icon: ChartIcon,
+      color: "from-indigo-600 to-blue-500",
+      iconTone: "text-indigo-200 bg-indigo-500/15",
+    },
+    {
+      Icon: ApiIcon,
+      color: "from-slate-600 to-blue-500",
+      iconTone: "text-slate-200 bg-slate-500/20",
+    },
+  ] as const;
+
+  const capabilities = t.capList.map((title, index) => ({
+    title,
+    description: capabilityDescriptions[index] ?? "",
+    ...capabilityStyles[index],
+  }));
+
   return (
     <section id="about" className="relative py-24 overflow-hidden bg-slate-950">
       <div
@@ -131,7 +143,7 @@ export function WhyVibeCodingFails() {
           className="flex justify-center"
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-400/30 bg-blue-500/10 text-blue-100 text-sm font-medium">
-            Capabilities
+            {t.capTitle}
           </span>
         </motion.div>
 
@@ -142,7 +154,7 @@ export function WhyVibeCodingFails() {
           transition={{ duration: 0.5, delay: 0.04 }}
           className="mt-4 text-center text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-100"
         >
-          Capabilities
+          {t.capTitle}
         </motion.h2>
 
         <motion.p
@@ -152,12 +164,13 @@ export function WhyVibeCodingFails() {
           transition={{ duration: 0.5, delay: 0.08 }}
           className="mt-4 text-center text-zinc-300 max-w-3xl mx-auto leading-relaxed"
         >
-          Professional product engineering across enterprise AI systems, analytics workflows, and integration-ready
-          application architecture.
+          {lang === "zh"
+            ? "围绕企业AI应用、数据分析流程与工程落地能力构建可交付系统。"
+            : "Professional product engineering across enterprise AI systems, analytics workflows, and integration-ready application architecture."}
         </motion.p>
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {CAPABILITIES.map(({ title, description, Icon, color, iconTone }, index) => (
+          {capabilities.map(({ title, description, Icon, color, iconTone }, index) => (
             <motion.div
               key={title}
               initial={{ opacity: 0, y: 20 }}
