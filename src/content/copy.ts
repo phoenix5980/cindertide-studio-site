@@ -20,6 +20,14 @@ export const copy = {
       "Bridges knowledge retrieval and structured analytics into a single interface, improving decision efficiency and consistency.",
     bankingSupport:
       "Supports Chinese banking workflows including: KYC onboarding · support guidance · KPI analytics",
+    healthcareTitle: "Healthcare Intelligence Dashboard",
+    healthcareDesc:
+      "A healthcare data demo combining population risk stratification, care operations monitoring, and explainable AI insights.",
+    healthcareWhy:
+      "Brings clinical risk, operational signals, and governance controls into one executive-ready data product experience.",
+    healthcareSupport:
+      "Supports stakeholder presentations for healthcare groups and regulated enterprise data initiatives.",
+    healthcareCardLink: "Open Healthcare Demo",
 
     assistantTitle: "Enterprise AI Assistant",
     assistantDesc:
@@ -232,6 +240,14 @@ export const copy = {
       "将知识问答与结构化数据分析整合到统一界面，提升业务处理效率与一致性。",
     bankingSupport:
       "支持中国银行典型业务流程：KYC开户 · 客服指引 · KPI分析",
+    healthcareTitle: "医疗智能数据看板",
+    healthcareDesc:
+      "融合人群风险分层、医疗运营监测与可解释 AI 洞察的医疗数据产品演示。",
+    healthcareWhy:
+      "在同一界面整合临床风险、运营信号与治理控制，适合管理层与政企汇报场景。",
+    healthcareSupport:
+      "适用于医疗机构与强监管行业的数据智能演示沟通。",
+    healthcareCardLink: "查看医疗 Demo",
 
     assistantTitle: "企业AI助手",
     assistantDesc:

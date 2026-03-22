@@ -1,5 +1,5 @@
 import type { MetaFunction } from "react-router";
-import LandingPage from "@/components/site/landing/LandingPage";
+import { HomePage } from "@/pages/Home";
 
 const SITE_URL = import.meta.env.VITE_SITE_URL ?? "https://cindertide.studio";
 
@@ -41,5 +41,5 @@ export const meta: MetaFunction = () => {
 };
 
 export default function HomeRoute() {
-  return <LandingPage />;
+  return <HomePage />;
 }

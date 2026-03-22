@@ -1,0 +1,1 @@
+import"./jsx-runtime-Bd0BLXGu.js";import"./LandingFooter-QfkklThZ.js";import{n as e,t}from"./route-CDp6Lmmd.js";export{e as default,t as meta};

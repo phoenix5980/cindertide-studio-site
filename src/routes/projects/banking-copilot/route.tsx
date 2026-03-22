@@ -1,5 +1,5 @@
 import type { MetaFunction } from "react-router";
-import { BankingCopilotPage } from "@/components/site/projects/BankingCopilotPage";
+import { BankingDemoPage } from "@/pages/demos/BankingDemo";
 
 const SITE_URL = import.meta.env.VITE_SITE_URL ?? "https://cindertide.studio";
 const PAGE_PATH = "/projects/banking-copilot";
@@ -33,5 +33,5 @@ export const meta: MetaFunction = () => {
 };
 
 export default function BankingCopilotRoute() {
-  return <BankingCopilotPage />;
+  return <BankingDemoPage />;
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DemosEntry } from "./DemosEntry";
 import { Features } from "./Features";
 import { Hero } from "./Hero";
 import { LandingCTA } from "./LandingCTA";
@@ -31,6 +32,7 @@ export default function LandingPage() {
       <main className="relative">
         <Hero lang={lang} />
         <Features lang={lang} />
+        <DemosEntry lang={lang} />
         <WhyVibeCodingFails lang={lang} />
         <LandingCTA lang={lang} />
       </main>

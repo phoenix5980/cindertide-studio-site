@@ -17,6 +17,7 @@ type Project = {
   gradient: string;
   featured?: boolean;
   href?: string;
+  linkLabel?: string;
 };
 
 function ShieldChartIcon({ className }: IconProps) {
@@ -74,6 +75,26 @@ function WorkflowIcon({ className }: IconProps) {
   );
 }
 
+function HealthPulseIcon({ className }: IconProps) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 12h3l2-4 3 8 2-4h6" />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 21s-7-4.35-7-10a4 4 0 0 1 7-2.35A4 4 0 0 1 19 11c0 5.65-7 10-7 10z"
+      />
+    </svg>
+  );
+}
+
 function getProjects(lang: Lang): Project[] {
   const t = copy[lang];
 
@@ -91,6 +112,20 @@ function getProjects(lang: Lang): Project[] {
           "Explicit agent routing (RAG / SQL / clarification)",
           "Readonly safety controls",
         ];
+  const healthcareHighlights =
+    lang === "zh"
+      ? [
+          "人群健康风险分层与优先级管理",
+          "临床与运营指标的统一监控",
+          "AI 洞察与建议动作面板",
+          "合规与可解释性治理模块",
+        ]
+      : [
+          "Population health risk stratification",
+          "Unified clinical and operational metrics",
+          "AI insight panel with recommended actions",
+          "Compliance and explainability governance module",
+        ];
 
   return [
     {
@@ -103,7 +138,21 @@ function getProjects(lang: Lang): Project[] {
       Icon: ShieldChartIcon,
       gradient: "from-blue-600 to-sky-500",
       featured: true,
-      href: "/projects/banking-copilot",
+      href: "/demo/banking",
+      linkLabel: t.bankingCopilot.cardLink,
+    },
+    {
+      title: t.healthcareTitle,
+      description: t.healthcareDesc,
+      supportLine: t.healthcareSupport,
+      highlights: healthcareHighlights,
+      whyItMatters: t.healthcareWhy,
+      tags: ["Healthcare Data", "Population Risk", "AI Insights", "Compliance"],
+      Icon: HealthPulseIcon,
+      gradient: "from-indigo-600 to-cyan-500",
+      featured: true,
+      href: "/demo/healthcare",
+      linkLabel: t.healthcareCardLink,
     },
     {
       title: t.assistantTitle,
@@ -203,7 +252,7 @@ function ProjectCard({
 export function Features({ lang }: { lang: Lang }) {
   const t = copy[lang];
   const projects = getProjects(lang);
-  const featuredProject = projects.find((project) => project.featured);
+  const featuredProjects = projects.filter((project) => project.featured);
   const secondaryProjects = projects.filter((project) => !project.featured);
 
   return (
@@ -225,28 +274,32 @@ export function Features({ lang }: { lang: Lang }) {
         </motion.div>
 
         <div className="space-y-8">
-          {featuredProject ? (
-            <motion.div
-              key={featuredProject.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.42 }}
-              className="w-full"
-            >
-              {featuredProject.href ? (
-                <Link
-                  to={featuredProject.href}
-                  aria-label={t.bankingCopilot.cardLink}
-                  title={t.bankingCopilot.cardLink}
-                  className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-2xl"
+          {featuredProjects.length ? (
+            <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+              {featuredProjects.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.42, delay: index * 0.05 }}
+                  className="w-full"
                 >
-                  <ProjectCard {...featuredProject} lang={lang} />
-                </Link>
-              ) : (
-                <ProjectCard {...featuredProject} lang={lang} />
-              )}
-            </motion.div>
+                  {project.href ? (
+                    <Link
+                      to={project.href}
+                      aria-label={project.linkLabel ?? project.title}
+                      title={project.linkLabel ?? project.title}
+                      className="block h-full rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+                    >
+                      <ProjectCard {...project} lang={lang} />
+                    </Link>
+                  ) : (
+                    <ProjectCard {...project} lang={lang} />
+                  )}
+                </motion.div>
+              ))}
+            </div>
           ) : null}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

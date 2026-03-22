@@ -33,6 +33,7 @@ export function LandingHeader({ lang, setLang }: LandingHeaderProps) {
   const navItems = [
     { label: t.navCapabilities, id: "about" },
     { label: t.navProjects, id: "projects" },
+    { label: lang === "zh" ? "演示" : "Demos", id: "demos" },
     { label: t.navApproach, id: "vision" },
   ] as const;
 

@@ -14,6 +14,18 @@ type Pages = {
   "/": {
     params: {};
   };
+  "/demo/banking": {
+    params: {};
+  };
+  "/demo/healthcare": {
+    params: {};
+  };
+  "/demo/fgo": {
+    params: {};
+  };
+  "/demo/agent": {
+    params: {};
+  };
   "/projects/banking-copilot": {
     params: {};
   };
@@ -27,11 +39,27 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/projects/banking-copilot" | "/*";
+    page: "/" | "/demo/banking" | "/demo/healthcare" | "/demo/fgo" | "/demo/agent" | "/projects/banking-copilot" | "/*";
   };
   "routes/home/route.tsx": {
     id: "routes/home/route";
     page: "/";
+  };
+  "routes/demo/banking/route.tsx": {
+    id: "routes/demo/banking/route";
+    page: "/demo/banking";
+  };
+  "routes/demo/healthcare/route.tsx": {
+    id: "routes/demo/healthcare/route";
+    page: "/demo/healthcare";
+  };
+  "routes/demo/fgo/route.tsx": {
+    id: "routes/demo/fgo/route";
+    page: "/demo/fgo";
+  };
+  "routes/demo/agent/route.tsx": {
+    id: "routes/demo/agent/route";
+    page: "/demo/agent";
   };
   "routes/projects/banking-copilot/route.tsx": {
     id: "routes/projects/banking-copilot/route";
@@ -46,6 +74,10 @@ type RouteFiles = {
 type RouteModules = {
   "root": typeof import("./src/root.tsx");
   "routes/home/route": typeof import("./src/routes/home/route.tsx");
+  "routes/demo/banking/route": typeof import("./src/routes/demo/banking/route.tsx");
+  "routes/demo/healthcare/route": typeof import("./src/routes/demo/healthcare/route.tsx");
+  "routes/demo/fgo/route": typeof import("./src/routes/demo/fgo/route.tsx");
+  "routes/demo/agent/route": typeof import("./src/routes/demo/agent/route.tsx");
   "routes/projects/banking-copilot/route": typeof import("./src/routes/projects/banking-copilot/route.tsx");
   "routes/catchall/route": typeof import("./src/routes/catchall/route.tsx");
 };
