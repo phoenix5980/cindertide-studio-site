@@ -3,16 +3,16 @@ export const healthcareCopy = {
     backHome: "Back to Home",
     githubLabel: "GitHub",
     pageBadge: "Healthcare Data Demo",
-    heroTitle: "Healthcare Intelligence Command Center",
+    heroTitle: "Healthcare Data Intelligence Platform",
     heroSubtitle:
-      "AI-assisted population health monitoring for clinical operations and care quality teams",
+      "AI-assisted population health and operations management for regional healthcare ecosystems",
     heroDescription:
-      "A simulated enterprise healthcare data product that combines risk stratification, operational metrics, and governance-ready AI insight workflows.",
+      "A simulated enterprise health data product showcasing how governance-ready data workflows support risk stratification, operational visibility, and measurable service outcomes.",
     tags: [
+      "Regional Data Platform",
+      "Hospital Operations",
       "Population Health",
-      "Clinical Operations",
-      "Risk Intelligence",
-      "Audit-ready AI",
+      "Compliant Data Services",
     ],
     heroActions: {
       openBanking: "Open Banking Demo",
@@ -21,32 +21,69 @@ export const healthcareCopy = {
     executive: {
       title: "Executive Summary",
       paragraphs: [
-        "The platform unifies patient risk surveillance, care pathway alerts, and hospital throughput indicators in a single workspace. Care teams get patient-level prioritization while leadership sees de-identified trend performance across service lines.",
-        "Workflow outcome: fewer avoidable readmissions, improved discharge follow-through, and clearer escalation playbooks backed by transparent model evidence.",
+        "This product workspace is built for regional platform operators, hospital operations leaders, and care management teams who need one consistent view of data readiness, risk exposure, and execution status.",
+        "The operating model follows a closed loop: data integration and governance, AI-based risk identification, stratified intervention, and outcome tracking. This helps teams improve follow-up efficiency while maintaining compliance and audit confidence.",
       ],
       callouts: [
         {
-          title: "Primary Value",
+          title: "Business Focus",
           description:
-            "Prioritize intervention resources where clinical and operational risk overlap.",
+            "Connect policy-oriented governance goals with frontline execution and measurable outcomes.",
         },
         {
-          title: "Deployment Lens",
+          title: "Deployment Context",
           description:
-            "Designed for regulated healthcare environments with strong audit and governance requirements.",
+            "Designed for regulated healthcare environments where data authorization, traceability, and role-scoped access are mandatory.",
         },
       ],
       snapshotTitle: "Operational Snapshot",
       snapshotStats: [
-        { label: "Active Facilities", value: "22" },
-        { label: "Care Teams Connected", value: "198" },
-        { label: "Model Refresh Cadence", value: "Every 6 hours" },
+        { label: "Connected Institutions", value: "22" },
+        { label: "Active Care Coordination Teams", value: "198" },
+        { label: "Cross-system Data Availability", value: "99.2%" },
+      ],
+    },
+    targetUsers: {
+      title: "Target Users & Scenarios",
+      subtitle:
+        "A shared product surface for healthcare organizations that need coordinated governance, operations management, and population-level intervention.",
+      scenarioLabel: "Typical Workflow",
+      valueLabel: "Business Value",
+      cards: [
+        {
+          role: "Regional Platform Operators",
+          scenario:
+            "Monitor cross-institution data access, quality status, and policy execution across jurisdictions.",
+          value:
+            "Maintain unified governance standards and improve service visibility for regional decision-making.",
+        },
+        {
+          role: "Hospital Operations Managers",
+          scenario:
+            "Track bed utilization, discharge continuity, and department-level throughput signals in one console.",
+          value:
+            "Improve operational visibility and reduce avoidable care delays or callback burden.",
+        },
+        {
+          role: "Care Management Teams",
+          scenario:
+            "Use risk-tiered lists to prioritize chronic disease follow-up and post-discharge outreach actions.",
+          value:
+            "Improve follow-up efficiency and expand risk screening coverage for vulnerable cohorts.",
+        },
+        {
+          role: "Public Data Operations Teams",
+          scenario:
+            "Package de-identified indicators for authorized service delivery and ecosystem collaboration.",
+          value:
+            "Support compliant data circulation and practical data-value realization initiatives.",
+        },
       ],
     },
     overview: {
       title: "Population Health Overview",
       subtitle:
-        "Simulated, de-identified metrics illustrating daily monitoring coverage and quality performance.",
+        "Simulated, de-identified metrics that illustrate daily monitoring coverage and care quality performance.",
       cards: [
         {
           label: "Monitored Population",
@@ -66,9 +103,52 @@ export const healthcareCopy = {
         },
       ],
     },
+    workflow: {
+      title: "Closed-Loop Operations Workflow",
+      subtitle:
+        "A stakeholder-friendly product workflow from authorized data access to intervention outcomes.",
+      stepLabel: "Step",
+      outputLabel: "Operational Output",
+      loopLabel: "Closed-Loop Signal",
+      loopNote:
+        "Outcome metrics feed back into governance review and model recalibration, enabling continuous operational improvement.",
+      steps: [
+        {
+          title: "Data Access & Integration",
+          description:
+            "Connect HIS, EMR, public health, and care follow-up feeds through approved interfaces and access controls.",
+          output: "Unified data intake with clear authorization boundaries",
+        },
+        {
+          title: "Normalization & Governance",
+          description:
+            "Apply patient/entity normalization, coding alignment, quality checks, and sensitive-field handling policies.",
+          output: "Governed datasets ready for cross-team analysis",
+        },
+        {
+          title: "Risk Identification",
+          description:
+            "Run cohort scoring for readmission, chronic disease management, and care-gap detection with priority tiers.",
+          output: "Actionable risk lists by urgency and impact",
+        },
+        {
+          title: "Stratified Intervention",
+          description:
+            "Assign intervention tasks to care and operations teams with SLA windows, recommendations, and escalation paths.",
+          output: "Coordinated execution across clinical and operational roles",
+        },
+        {
+          title: "Follow-up & Outcome Tracking",
+          description:
+            "Track completion, readmission shifts, and intervention effect to refine strategies and allocation decisions.",
+          output: "Measured outcomes for management review and planning",
+        },
+      ],
+    },
     risk: {
       title: "Risk Stratification",
-      subtitle: "Current model classification across monitored high-acuity cohorts.",
+      subtitle:
+        "Current model classification across monitored high-priority cohorts and intervention tiers.",
       buckets: [
         {
           segment: "High Risk",
@@ -91,7 +171,7 @@ export const healthcareCopy = {
     insights: {
       title: "AI Insight Panel",
       subtitle:
-        "Prioritized observations surfaced from simulated model and operational event streams.",
+        "Prioritized observations surfaced from simulated model signals and operational event streams.",
       recommendationLabel: "Recommended Action",
       severityLabels: {
         high: "high",
@@ -141,6 +221,56 @@ export const healthcareCopy = {
         },
       ],
     },
+    aiLogic: {
+      title: "AI Decision Flow",
+      subtitle:
+        "A compact business-facing explanation of how multi-source healthcare data becomes operational recommendations.",
+      blocks: [
+        {
+          label: "Inputs",
+          detail:
+            "De-identified clinical events, chronic disease registries, discharge records, lab trends, and operational telemetry.",
+        },
+        {
+          label: "Analysis & Scoring",
+          detail:
+            "Rule-based checks and risk models estimate readmission, care-gap likelihood, and intervention priority tiers.",
+        },
+        {
+          label: "Outputs",
+          detail:
+            "Risk-stratified cohorts, intervention task queues, coordination prompts, and management trend indicators.",
+        },
+        {
+          label: "Explainability & Governance",
+          detail:
+            "Each recommendation includes model version, key factors, timestamp, and role-scoped visibility for audit review.",
+        },
+      ],
+      flowTitle: "How teams use it",
+      flowSteps: [
+        {
+          title: "Data stewards verify readiness",
+          description:
+            "Governance teams confirm data quality and authorization scope before scoring runs.",
+        },
+        {
+          title: "AI engine prioritizes risk",
+          description:
+            "The platform generates risk tiers and intervention suggestions by cohort urgency.",
+        },
+        {
+          title: "Operations and care teams execute",
+          description:
+            "Task lists and suggested actions support coordinated follow-up and escalation.",
+        },
+        {
+          title: "Management reviews outcomes",
+          description:
+            "Leaders track completion and impact metrics to optimize policy and resource allocation.",
+        },
+      ],
+    },
     governance: {
       title: "Explainability, Compliance, and Governance",
       description:
@@ -167,10 +297,52 @@ export const healthcareCopy = {
         },
       ],
     },
+    outcomes: {
+      title: "Value Outcomes",
+      subtitle:
+        "Conservative, operations-focused outcomes commonly tracked in healthcare data platform programs.",
+      metricLabel: "Suggested KPI Lens",
+      items: [
+        {
+          title: "Improve follow-up efficiency",
+          description:
+            "Risk-prioritized work queues reduce manual triage overhead for care management teams.",
+          metric: "Track: follow-up timeliness and task completion cycle time",
+        },
+        {
+          title: "Reduce avoidable readmissions",
+          description:
+            "Earlier outreach for high-risk discharge cohorts helps lower unnecessary return visits.",
+          metric: "Track: 30-day readmission rate in intervention cohorts",
+        },
+        {
+          title: "Strengthen chronic disease screening",
+          description:
+            "Population-level scoring surfaces under-served groups for proactive outreach planning.",
+          metric: "Track: screening coverage and overdue follow-up closure",
+        },
+        {
+          title: "Improve operational visibility",
+          description:
+            "Cross-facility indicators align management teams on throughput, quality, and bottlenecks.",
+          metric: "Track: discharge continuity, occupancy, and callback burden",
+        },
+        {
+          title: "Support compliant data circulation",
+          description:
+            "De-identified service outputs support authorized collaboration and practical data-value programs.",
+          metric: "Track: authorized data service usage and delivery SLA",
+        },
+      ],
+    },
+    disclaimer: {
+      title: "Demo Notice",
+      text: "This page is a simulated product showcase. Data shown is fictional, de-identified, and illustrative only, and should not be used for real clinical diagnosis or treatment decisions.",
+    },
     cta: {
       title: "Explore More Demos",
       description:
-        "The demo architecture now supports multiple vertical showcases under a shared visual and routing system.",
+        "This demo platform supports multiple vertical showcases under one shared visual and routing system.",
       banking: "Banking Demo",
       home: "Back to Home",
     },
@@ -179,11 +351,11 @@ export const healthcareCopy = {
     backHome: "返回首页",
     githubLabel: "GitHub",
     pageBadge: "医疗数据演示",
-    heroTitle: "医疗智能数据指挥中心",
-    heroSubtitle: "面向临床运营与质量团队的人群健康 AI 监测平台",
+    heroTitle: "医疗健康数据智能运营平台",
+    heroSubtitle: "面向区域平台与医疗机构的人群健康管理与运营决策支持",
     heroDescription:
-      "该演示展示了一个企业级医疗数据产品：将风险分层、运营指标与合规治理能力整合到统一工作台。",
-    tags: ["人群健康", "临床运营", "风险智能", "可审计 AI"],
+      "本页面为模拟演示，展示医疗健康数据产品如何贯通数据治理、风险分层、干预执行与效果评估，支撑合规流通与应用落地。",
+    tags: ["区域健康数据平台", "医院运营管理", "慢病人群管理", "合规流通与应用支撑"],
     heroActions: {
       openBanking: "查看银行 Demo",
       viewDemos: "查看全部 Demo",
@@ -191,29 +363,58 @@ export const healthcareCopy = {
     executive: {
       title: "执行摘要",
       paragraphs: [
-        "平台将患者风险监测、照护路径告警与医院运营吞吐指标整合到同一界面。临床团队可获得患者级优先级，管理层可查看脱敏后的趋势表现。",
-        "预期效果：降低可避免再入院率、提升出院随访执行质量，并通过可解释证据支持分级干预决策。",
+        "该平台面向区域平台运营方、医院运营管理者与照护管理团队，提供统一的数据可用性、风险态势与执行进展视图，支撑跨部门协同。",
+        "业务流程采用“接入治理—风险识别—分层干预—效果追踪”的闭环模式，在保障合规可审计的前提下，提升随访效率与运营决策质量。",
       ],
       callouts: [
         {
-          title: "核心价值",
-          description: "在临床风险与运营风险重叠处优先投入干预资源。",
+          title: "业务导向",
+          description: "将治理目标与一线执行联动，形成可量化、可复盘的价值闭环。",
         },
         {
-          title: "部署视角",
-          description: "面向强监管医疗场景设计，支持审计与治理要求。",
+          title: "落地场景",
+          description: "适配强监管环境下的数据授权、过程留痕与分角色使用要求。",
         },
       ],
       snapshotTitle: "运营快照",
       snapshotStats: [
-        { label: "接入机构数", value: "22" },
-        { label: "连接护理团队", value: "198" },
-        { label: "模型刷新频率", value: "每 6 小时" },
+        { label: "接入医疗机构", value: "22" },
+        { label: "协同管理团队", value: "198" },
+        { label: "跨系统数据可用率", value: "99.2%" },
+      ],
+    },
+    targetUsers: {
+      title: "目标用户与应用场景",
+      subtitle:
+        "围绕医疗数据治理、运营监测与人群健康管理，支持多角色在同一平台上协同工作。",
+      scenarioLabel: "典型工作场景",
+      valueLabel: "业务价值",
+      cards: [
+        {
+          role: "区域平台运营方",
+          scenario: "统筹多机构数据接入、质量监测与口径一致性管理，保障平台运行稳定。",
+          value: "提升区域级治理能力与服务可视化水平，支撑管理决策与绩效评估。",
+        },
+        {
+          role: "医院运营管理团队",
+          scenario: "持续关注床位周转、出院衔接、科室负载与回访压力等关键运营信号。",
+          value: "提升运营可见度，减少可避免的流程延迟与重复工作负担。",
+        },
+        {
+          role: "慢病管理与照护团队",
+          scenario: "基于风险分层清单开展重点人群触达、随访与干预任务管理。",
+          value: "提升随访执行效率，扩大慢病风险筛查与管理覆盖范围。",
+        },
+        {
+          role: "公共数据运营团队",
+          scenario: "在授权边界内提供脱敏指标服务，支撑跨机构协同与应用服务供给。",
+          value: "促进数据要素价值释放，支撑合规流通与场景化应用落地。",
+        },
       ],
     },
     overview: {
       title: "人群健康总览",
-      subtitle: "基于模拟脱敏数据，展示日常监测覆盖与质量表现。",
+      subtitle: "基于模拟脱敏数据，展示日常监测覆盖、质量表现与执行压力。",
       cards: [
         {
           label: "监测人群规模",
@@ -233,9 +434,44 @@ export const healthcareCopy = {
         },
       ],
     },
+    workflow: {
+      title: "业务闭环流程",
+      subtitle: "以产品工作流方式呈现从数据接入到效果回传的端到端闭环。",
+      stepLabel: "步骤",
+      outputLabel: "阶段产出",
+      loopLabel: "闭环回传",
+      loopNote: "运营结果会回流治理评估与模型校准，推动策略与资源配置持续优化。",
+      steps: [
+        {
+          title: "数据接入与汇聚",
+          description: "通过授权接口接入 HIS、EMR、公卫及随访等多源数据，形成统一入口。",
+          output: "构建边界清晰、可追溯的数据底座",
+        },
+        {
+          title: "标准化与治理",
+          description: "执行主索引归一、编码映射、质量校验与敏感字段分级处理。",
+          output: "形成可共享、可审计的治理数据集",
+        },
+        {
+          title: "风险识别与分层",
+          description: "围绕慢病管理、再入院风险与照护缺口开展分层评分与优先级排序。",
+          output: "输出可执行的风险清单与预警线索",
+        },
+        {
+          title: "分层干预与协同",
+          description: "向运营与照护团队派发任务，提供 SLA 时效、建议动作与升级路径。",
+          output: "提升跨角色协同与干预执行效率",
+        },
+        {
+          title: "效果追踪与策略迭代",
+          description: "跟踪随访完成率、再入院变化与干预成效，支撑管理复盘与策略优化。",
+          output: "形成可量化的业务改进依据",
+        },
+      ],
+    },
     risk: {
       title: "风险分层",
-      subtitle: "当前高重点人群的模型分层结果。",
+      subtitle: "面向重点人群的当前分层结果与建议干预动作。",
       buckets: [
         {
           segment: "高风险",
@@ -255,8 +491,8 @@ export const healthcareCopy = {
       triageDescription: "当前有 {count} 名患者被纳入主动风险分层与干预规划。",
     },
     insights: {
-      title: "AI 洞察面板",
-      subtitle: "由模拟模型流与运营事件流联动产生的优先级洞察。",
+      title: "AI 辅助洞察",
+      subtitle: "基于模拟模型信号与运营事件流生成的优先级洞察。",
       recommendationLabel: "建议动作",
       severityLabels: {
         high: "高",
@@ -283,7 +519,7 @@ export const healthcareCopy = {
     },
     trends: {
       title: "趋势指标",
-      subtitle: "按周展示入院负载、再入院风险与住院床位占用趋势。",
+      subtitle: "按周展示入院负载、再入院风险与床位占用变化。",
       cards: [
         {
           title: "入院吞吐",
@@ -299,9 +535,50 @@ export const healthcareCopy = {
         },
       ],
     },
+    aiLogic: {
+      title: "AI辅助分析流程",
+      subtitle: "以业务视角说明 AI 如何将多源数据转化为可执行的管理与干预建议。",
+      blocks: [
+        {
+          label: "输入数据",
+          detail: "脱敏临床事件、慢病登记、出院记录、检验趋势与运营监测数据。",
+        },
+        {
+          label: "分析与评分",
+          detail: "结合规则引擎与风险模型，计算再入院、照护缺口与干预优先级。",
+        },
+        {
+          label: "产出结果",
+          detail: "输出风险分层队列、干预任务清单、协同提示与管理趋势指标。",
+        },
+        {
+          label: "可解释与治理",
+          detail: "每条建议保留模型版本、关键因子、时间戳与角色权限范围，支持审计复盘。",
+        },
+      ],
+      flowTitle: "业务侧使用路径",
+      flowSteps: [
+        {
+          title: "治理团队先做可用性确认",
+          description: "在评分前完成数据质量校验与授权范围核验。",
+        },
+        {
+          title: "AI 引擎输出风险优先级",
+          description: "平台按人群紧急度生成风险分层与建议干预动作。",
+        },
+        {
+          title: "运营与照护团队执行任务",
+          description: "基于任务清单开展触达、随访和升级处理。",
+        },
+        {
+          title: "管理层复盘并优化策略",
+          description: "通过成效指标评估投入产出并调整资源配置。",
+        },
+      ],
+    },
     governance: {
       title: "可解释性、合规与治理",
-      description: "用于支持医疗监管审查、内部治理与安全落地的控制能力。",
+      description: "用于支持监管审查、内部治理与安全落地的关键控制能力。",
       statusLabels: {
         active: "已启用",
         scheduled: "计划中",
@@ -321,9 +598,45 @@ export const healthcareCopy = {
         },
       ],
     },
+    outcomes: {
+      title: "价值产出",
+      subtitle: "以下为平台在实际推进中常见、可审慎评估的业务价值方向。",
+      metricLabel: "建议关注指标",
+      items: [
+        {
+          title: "提升随访执行效率",
+          description: "通过风险优先队列减少人工筛查成本，提升团队任务处理节奏。",
+          metric: "可关注：随访及时率、任务完成周期",
+        },
+        {
+          title: "降低可避免再入院",
+          description: "针对高风险出院人群提前触达，减少非必要回流与重复服务压力。",
+          metric: "可关注：重点人群 30 天再入院率",
+        },
+        {
+          title: "强化慢病风险筛查",
+          description: "通过人群分层识别管理盲区，支持慢病人群主动管理。",
+          metric: "可关注：筛查覆盖率、逾期闭环率",
+        },
+        {
+          title: "增强运营监测可见度",
+          description: "跨机构统一指标口径，帮助管理层识别瓶颈并快速决策。",
+          metric: "可关注：出院衔接、床位占用、回访压力",
+        },
+        {
+          title: "支撑数据要素价值释放",
+          description: "以脱敏服务输出支撑授权协同，推动合规流通与应用支撑。",
+          metric: "可关注：授权服务调用量与交付时效",
+        },
+      ],
+    },
+    disclaimer: {
+      title: "演示说明",
+      text: "本页面为模拟演示，所示数据均为虚构或脱敏示例，仅用于产品展示，不可直接用于真实临床诊疗决策。",
+    },
     cta: {
       title: "查看更多 Demo",
-      description: "当前 Demo 架构已支持在统一视觉与路由体系下扩展更多行业场景。",
+      description: "当前 Demo 平台可在统一视觉与路由体系下持续扩展更多行业场景。",
       banking: "银行 Demo",
       home: "返回首页",
     },

@@ -264,6 +264,48 @@ export function HealthcareDemoPage() {
 
         <section className="relative py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold tracking-tight text-zinc-100">
+              {t.targetUsers.title}
+            </h2>
+            <p className="mt-3 max-w-4xl text-sm leading-relaxed text-zinc-300">
+              {t.targetUsers.subtitle}
+            </p>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {t.targetUsers.cards.map((card) => (
+                <div
+                  key={card.role}
+                  className="rounded-2xl border border-slate-700/80 bg-slate-900/70 p-5"
+                >
+                  <p className="text-sm font-semibold text-zinc-100">{card.role}</p>
+
+                  <div className="mt-4 space-y-3">
+                    <div className="rounded-lg border border-slate-700/80 bg-slate-950/70 p-3">
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500">
+                        {t.targetUsers.scenarioLabel}
+                      </p>
+                      <p className="mt-1 text-sm leading-relaxed text-zinc-300">
+                        {card.scenario}
+                      </p>
+                    </div>
+
+                    <div className="rounded-lg border border-blue-400/20 bg-blue-500/10 p-3">
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-blue-200">
+                        {t.targetUsers.valueLabel}
+                      </p>
+                      <p className="mt-1 text-sm leading-relaxed text-blue-100/90">
+                        {card.value}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold tracking-tight text-zinc-100">{t.overview.title}</h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-300">
               {t.overview.subtitle}
@@ -280,6 +322,49 @@ export function HealthcareDemoPage() {
                   tone={metric.tone}
                 />
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold tracking-tight text-zinc-100">
+              {t.workflow.title}
+            </h2>
+            <p className="mt-3 max-w-4xl text-sm leading-relaxed text-zinc-300">
+              {t.workflow.subtitle}
+            </p>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+              {t.workflow.steps.map((step, index) => (
+                <div
+                  key={step.title}
+                  className="rounded-2xl border border-slate-700/80 bg-slate-900/70 p-4"
+                >
+                  <span className="inline-flex rounded-full border border-slate-600 bg-slate-950/70 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-zinc-300">
+                    {t.workflow.stepLabel} {index + 1}
+                  </span>
+                  <p className="mt-3 text-sm font-semibold text-zinc-100">{step.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-zinc-300">{step.description}</p>
+                  <div className="mt-3 rounded-lg border border-indigo-400/20 bg-indigo-500/10 p-3">
+                    <p className="text-[11px] font-semibold uppercase tracking-wide text-indigo-200">
+                      {t.workflow.outputLabel}
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-indigo-100/90">
+                      {step.output}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 rounded-xl border border-blue-400/20 bg-blue-500/10 p-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-blue-200">
+                {t.workflow.loopLabel}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-blue-100/90">
+                {t.workflow.loopNote}
+              </p>
             </div>
           </div>
         </section>
@@ -367,6 +452,53 @@ export function HealthcareDemoPage() {
         </section>
 
         <section className="relative py-20">
+          <div className="mx-auto grid max-w-6xl gap-6 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+            <div className="rounded-2xl border border-slate-700/80 bg-slate-900/70 p-6 md:p-8">
+              <h2 className="text-3xl font-bold tracking-tight text-zinc-100">{t.aiLogic.title}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-300">{t.aiLogic.subtitle}</p>
+
+              <div className="mt-6 space-y-3">
+                {t.aiLogic.blocks.map((block) => (
+                  <div
+                    key={block.label}
+                    className="rounded-xl border border-slate-700/80 bg-slate-950/70 p-4"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
+                      {block.label}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-zinc-300">{block.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-slate-700/80 bg-slate-900/70 p-6 md:p-8">
+              <p className="text-sm font-semibold text-zinc-100">{t.aiLogic.flowTitle}</p>
+              <div className="mt-4 space-y-3">
+                {t.aiLogic.flowSteps.map((step, index) => (
+                  <div
+                    key={step.title}
+                    className="rounded-xl border border-slate-700/80 bg-slate-950/70 p-4"
+                  >
+                    <div className="flex items-start gap-3">
+                      <span className="inline-flex h-6 w-6 flex-none items-center justify-center rounded-full border border-blue-400/25 bg-blue-500/15 text-[11px] font-semibold text-blue-100">
+                        {index + 1}
+                      </span>
+                      <div>
+                        <p className="text-sm font-semibold text-zinc-100">{step.title}</p>
+                        <p className="mt-1 text-sm leading-relaxed text-zinc-300">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="relative py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <ComplianceBlock
               title={t.governance.title}
@@ -378,12 +510,45 @@ export function HealthcareDemoPage() {
         </section>
 
         <section className="relative py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold tracking-tight text-zinc-100">{t.outcomes.title}</h2>
+            <p className="mt-3 max-w-4xl text-sm leading-relaxed text-zinc-300">
+              {t.outcomes.subtitle}
+            </p>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {t.outcomes.items.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-2xl border border-slate-700/80 bg-slate-900/70 p-5"
+                >
+                  <p className="text-sm font-semibold text-zinc-100">{item.title}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-300">{item.description}</p>
+                  <div className="mt-4 rounded-lg border border-blue-400/20 bg-blue-500/10 p-3">
+                    <p className="text-[11px] font-semibold uppercase tracking-wide text-blue-200">
+                      {t.outcomes.metricLabel}
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-blue-100/90">{item.metric}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="rounded-2xl border border-slate-700/80 bg-slate-900/70 p-6 text-center md:p-8">
               <h2 className="text-3xl font-bold tracking-tight text-zinc-100">{t.cta.title}</h2>
               <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-zinc-300">
                 {t.cta.description}
               </p>
+              <div className="mx-auto mt-5 max-w-3xl rounded-lg border border-slate-700/80 bg-slate-950/70 p-3 text-left">
+                <p className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500">
+                  {t.disclaimer.title}
+                </p>
+                <p className="mt-1 text-xs leading-relaxed text-zinc-400">{t.disclaimer.text}</p>
+              </div>
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   to="/demo/banking"
