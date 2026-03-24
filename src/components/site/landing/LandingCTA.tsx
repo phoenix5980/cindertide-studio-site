@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
+import { useIsSafari } from "../../../hooks/useIsSafari";
 
 const GITHUB_URL = "https://github.com/phoenix5980";
 type Lang = "en" | "zh";
 
 export function LandingCTA({ lang }: { lang: Lang }) {
+  const isSafari = useIsSafari();
   const text =
     lang === "zh"
       ? {
@@ -27,9 +29,9 @@ export function LandingCTA({ lang }: { lang: Lang }) {
     <section id="vision" className="relative py-24 sm:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
 
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/12 rounded-full blur-2xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[620px] h-[620px] bg-slate-400/8 rounded-full blur-2xl pointer-events-none" />
+      <div className="safari-soft-glow absolute top-0 left-1/4 w-96 h-96 bg-blue-500/12 rounded-full blur-xl pointer-events-none" />
+      <div className="safari-soft-glow absolute bottom-0 right-1/4 w-80 h-80 bg-indigo-500/10 rounded-full blur-xl pointer-events-none" />
+      <div className="safari-soft-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[620px] h-[620px] bg-slate-400/8 rounded-full blur-xl pointer-events-none" />
 
       <svg
         aria-hidden="true"
@@ -59,7 +61,7 @@ export function LandingCTA({ lang }: { lang: Lang }) {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: isSafari ? 0.4 : 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-zinc-200 border border-white/20 mb-5">
             {text.badge}
@@ -79,7 +81,7 @@ export function LandingCTA({ lang }: { lang: Lang }) {
                   .getElementById("projects")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              whileHover={{ scale: 1.02 }}
+              whileHover={isSafari ? undefined : { scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-zinc-900 font-semibold shadow-lg shadow-black/30 hover:bg-zinc-100 transition-colors"
             >
@@ -89,7 +91,7 @@ export function LandingCTA({ lang }: { lang: Lang }) {
               href={GITHUB_URL}
               target="_blank"
               rel="noreferrer"
-              whileHover={{ scale: 1.02 }}
+              whileHover={isSafari ? undefined : { scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white/10 text-white font-semibold border border-white/30 hover:bg-white/20 transition-colors"
             >

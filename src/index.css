@@ -62,3 +62,15 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #3f3f46 transparent;
 }
+
+/* Safari-first performance degradation for expensive landing effects */
+html.is-safari .safari-glass {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  background-color: rgba(9, 9, 11, 0.9) !important;
+}
+
+html.is-safari .safari-soft-glow {
+  filter: blur(16px) !important;
+  opacity: 0.65;
+}

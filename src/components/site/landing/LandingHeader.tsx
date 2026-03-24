@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { copy } from "../../../content/copy";
 import { useIsMobileOrIOS } from "../../../hooks/useIsMobileOrIOS";
+import { useIsSafari } from "../../../hooks/useIsSafari";
 
 type Lang = "en" | "zh";
 type LandingHeaderProps = {
@@ -29,6 +30,7 @@ function GitHubIcon() {
 
 export function LandingHeader({ lang, setLang }: LandingHeaderProps) {
   const isMobileOrIOS = useIsMobileOrIOS();
+  const isSafari = useIsSafari();
   const t = copy[lang];
   const navItems = [
     { label: t.navCapabilities, id: "about" },
@@ -45,9 +47,9 @@ export function LandingHeader({ lang, setLang }: LandingHeaderProps) {
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 border-b border-zinc-800/70 ${
-        isMobileOrIOS ? "bg-zinc-950/88" : "backdrop-blur-xl bg-zinc-950/70"
+      transition={{ duration: 0.38, ease: "easeOut" }}
+      className={`safari-glass fixed top-0 left-0 right-0 z-50 border-b border-zinc-800/70 ${
+        isMobileOrIOS || isSafari ? "bg-zinc-950/88" : "backdrop-blur-md bg-zinc-950/72"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,7 +58,7 @@ export function LandingHeader({ lang, setLang }: LandingHeaderProps) {
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex items-center gap-2 text-xl font-bold"
-            whileHover={{ scale: 1.02 }}
+            whileHover={isMobileOrIOS || isSafari ? undefined : { scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
           >
             <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-white text-sm font-black shadow-sm">
@@ -125,7 +127,7 @@ export function LandingHeader({ lang, setLang }: LandingHeaderProps) {
             <button
               type="button"
               onClick={() => scrollTo("projects")}
-              className="hidden sm:flex items-center px-4 py-1.5 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 rounded-lg shadow-sm transition-all"
+              className="hidden sm:flex items-center px-4 py-1.5 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 rounded-lg shadow-sm transition-colors"
             >
               View Portfolio
             </button>

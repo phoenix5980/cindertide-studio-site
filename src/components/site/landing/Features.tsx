@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import type { ComponentType } from "react";
 import { Link } from "react-router";
 import { copy } from "../../../content/copy";
+import { useIsSafari } from "../../../hooks/useIsSafari";
 
 type IconProps = { className?: string };
 type Lang = "en" | "zh";
@@ -188,14 +189,15 @@ function ProjectCard({
   gradient,
   featured,
   lang,
-}: Project & { lang: Lang }) {
+  disableHoverLift = false,
+}: Project & { lang: Lang; disableHoverLift?: boolean }) {
   return (
     <motion.div
-      whileHover={{ y: -3 }}
+      whileHover={disableHoverLift ? undefined : { y: -2 }}
       transition={{ duration: 0.18 }}
       className={`relative h-full rounded-2xl border ${
         featured
-          ? "border-blue-300/55 bg-slate-900/92 shadow-lg shadow-blue-900/30"
+          ? "border-blue-300/55 bg-slate-900/92 shadow-md shadow-blue-900/20"
           : "border-slate-700/70 bg-slate-900/68"
       }`}
     >
@@ -250,6 +252,7 @@ function ProjectCard({
 }
 
 export function Features({ lang }: { lang: Lang }) {
+  const isSafari = useIsSafari();
   const t = copy[lang];
   const projects = getProjects(lang);
   const featuredProjects = projects.filter((project) => project.featured);
@@ -258,15 +261,15 @@ export function Features({ lang }: { lang: Lang }) {
   return (
     <section id="projects" className="relative py-24 sm:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
-      <div className="absolute top-24 left-0 w-80 h-80 bg-blue-500/8 rounded-full blur-2xl pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-indigo-500/8 rounded-full blur-2xl pointer-events-none" />
+      <div className="safari-soft-glow absolute top-24 left-0 w-80 h-80 bg-blue-500/8 rounded-full blur-xl pointer-events-none" />
+      <div className="safari-soft-glow absolute bottom-10 right-0 w-96 h-96 bg-indigo-500/8 rounded-full blur-xl pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: isSafari ? 0.36 : 0.5 }}
           className="text-center mb-14"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-zinc-100">{t.featuredTitle}</h2>
@@ -276,15 +279,8 @@ export function Features({ lang }: { lang: Lang }) {
         <div className="space-y-8">
           {featuredProjects.length ? (
             <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
-              {featuredProjects.map((project, index) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.42, delay: index * 0.05 }}
-                  className="w-full"
-                >
+              {featuredProjects.map((project) => (
+                <div key={project.title} className="w-full">
                   {project.href ? (
                     <Link
                       to={project.href}
@@ -292,27 +288,21 @@ export function Features({ lang }: { lang: Lang }) {
                       title={project.linkLabel ?? project.title}
                       className="block h-full rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
                     >
-                      <ProjectCard {...project} lang={lang} />
+                      <ProjectCard {...project} lang={lang} disableHoverLift={isSafari} />
                     </Link>
                   ) : (
-                    <ProjectCard {...project} lang={lang} />
+                    <ProjectCard {...project} lang={lang} disableHoverLift={isSafari} />
                   )}
-                </motion.div>
+                </div>
               ))}
             </div>
           ) : null}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {secondaryProjects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.38, delay: 0.05 + index * 0.06 }}
-              >
-                <ProjectCard {...project} lang={lang} />
-              </motion.div>
+            {secondaryProjects.map((project) => (
+              <div key={project.title}>
+                <ProjectCard {...project} lang={lang} disableHoverLift={isSafari} />
+              </div>
             ))}
           </div>
         </div>

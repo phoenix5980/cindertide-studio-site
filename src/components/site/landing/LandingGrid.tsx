@@ -9,6 +9,7 @@ const GRID_SIZE = 60;
 
 type PerformanceProps = {
   reducedMotion?: boolean;
+  disableAnimation?: boolean;
 };
 
 // ── Glowing lines moving along grid lines ──────────────────────────────────────────
@@ -62,8 +63,8 @@ export function GridLine({
       : "linear-gradient(180deg, transparent, rgba(99,102,241,0.8), rgba(139,92,246,0.6), transparent)";
 
   const shadow = reducedMotion
-    ? "0 0 10px rgba(99,102,241,0.28)"
-    : "0 0 20px rgba(99,102,241,0.5), 0 0 40px rgba(99,102,241,0.3)";
+    ? "0 0 6px rgba(99,102,241,0.2)"
+    : "0 0 12px rgba(99,102,241,0.36), 0 0 24px rgba(99,102,241,0.2)";
 
   if (isHorizontal) {
     return (
@@ -128,6 +129,7 @@ export function GridNode({
   col,
   delay = 0,
   reducedMotion = false,
+  disableAnimation = false,
 }: {
   row: number;
   col: number;
@@ -135,6 +137,22 @@ export function GridNode({
 } & PerformanceProps) {
   const nodeSize = reducedMotion ? 5 : 8;
   const offset = nodeSize / 2;
+
+  if (disableAnimation) {
+    return (
+      <div
+        className="absolute rounded-full pointer-events-none"
+        style={{
+          left: col * GRID_SIZE - offset,
+          top: row * GRID_SIZE - offset,
+          width: nodeSize,
+          height: nodeSize,
+          background: "rgba(99,102,241,0.35)",
+          boxShadow: "0 0 4px rgba(99,102,241,0.22)",
+        }}
+      />
+    );
+  }
 
   return (
     <motion.div
@@ -148,8 +166,8 @@ export function GridNode({
           ? "radial-gradient(circle, rgba(99,102,241,0.58) 0%, transparent 70%)"
           : "radial-gradient(circle, rgba(99,102,241,0.8) 0%, transparent 70%)",
         boxShadow: reducedMotion
-          ? "0 0 6px rgba(99,102,241,0.3)"
-          : "0 0 10px rgba(99,102,241,0.6)",
+          ? "0 0 4px rgba(99,102,241,0.22)"
+          : "0 0 8px rgba(99,102,241,0.45)",
       }}
       animate={{
         opacity: reducedMotion ? [0, 0.72, 0] : [0, 1, 0],
@@ -170,14 +188,23 @@ export function FloatingOrb({
   className,
   delay = 0,
   reducedMotion = false,
+  disableAnimation = false,
 }: {
   className?: string;
   delay?: number;
 } & PerformanceProps) {
+  if (disableAnimation) {
+    return (
+      <div
+        className={`absolute rounded-full blur-xl opacity-[0.18] pointer-events-none ${className ?? ""}`}
+      />
+    );
+  }
+
   return (
     <motion.div
       className={`absolute rounded-full ${
-        reducedMotion ? "blur-xl opacity-20" : "blur-3xl opacity-30"
+        reducedMotion ? "blur-xl opacity-[0.18]" : "blur-3xl opacity-[0.28]"
       } ${className}`}
       animate={
         reducedMotion

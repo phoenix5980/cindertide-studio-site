@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { copy } from "../../../content/copy";
 import { useIsMobileOrIOS } from "../../../hooks/useIsMobileOrIOS";
+import { useIsSafari } from "../../../hooks/useIsSafari";
 import { FloatingOrb, GridLine, GridNode, GridPattern } from "./LandingGrid";
 
 const GITHUB_URL = "https://github.com/phoenix5980";
@@ -66,11 +67,13 @@ const tagColors = [
 export function Hero({ lang }: { lang: Lang }) {
   const t = copy[lang];
   const isMobileOrIOS = useIsMobileOrIOS();
-  const horizontalLines = isMobileOrIOS
+  const isSafari = useIsSafari();
+  const reduceVisualLoad = isMobileOrIOS || isSafari;
+  const horizontalLines = reduceVisualLoad
     ? MOBILE_HORIZONTAL_LINES
     : DESKTOP_HORIZONTAL_LINES;
-  const verticalLines = isMobileOrIOS ? MOBILE_VERTICAL_LINES : DESKTOP_VERTICAL_LINES;
-  const gridNodes = isMobileOrIOS ? MOBILE_NODES : DESKTOP_NODES;
+  const verticalLines = reduceVisualLoad ? MOBILE_VERTICAL_LINES : DESKTOP_VERTICAL_LINES;
+  const gridNodes = reduceVisualLoad ? MOBILE_NODES : DESKTOP_NODES;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 text-zinc-100">
@@ -79,7 +82,9 @@ export function Hero({ lang }: { lang: Lang }) {
         className={`absolute inset-0 ${
           isMobileOrIOS
             ? "bg-[radial-gradient(circle_at_75%_24%,rgba(59,130,246,0.14),transparent_45%)]"
-            : "bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.16),transparent_42%),radial-gradient(circle_at_82%_34%,rgba(14,165,233,0.14),transparent_38%)]"
+            : isSafari
+              ? "bg-[radial-gradient(circle_at_50%_22%,rgba(59,130,246,0.14),transparent_46%)]"
+              : "bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.16),transparent_42%),radial-gradient(circle_at_82%_34%,rgba(14,165,233,0.14),transparent_38%)]"
         }`}
       />
 
@@ -87,65 +92,94 @@ export function Hero({ lang }: { lang: Lang }) {
         <>
           <FloatingOrb
             reducedMotion
+            disableAnimation={isSafari}
             className="w-[340px] h-[340px] bg-blue-500/14 -top-20 -left-20"
             delay={0.2}
           />
           <FloatingOrb
             reducedMotion
+            disableAnimation={isSafari}
             className="w-[320px] h-[320px] bg-sky-500/12 top-20 -right-24"
             delay={2}
           />
         </>
       ) : (
         <>
-          <FloatingOrb className="w-[620px] h-[620px] bg-blue-500/16 -top-44 -left-36" delay={0} />
-          <FloatingOrb className="w-[500px] h-[500px] bg-sky-500/14 top-24 -right-40" delay={2} />
           <FloatingOrb
-            className="w-[440px] h-[440px] bg-indigo-500/12 bottom-10 left-1/4"
+            reducedMotion={reduceVisualLoad}
+            disableAnimation={isSafari}
+            className={
+              isSafari
+                ? "w-[500px] h-[500px] bg-blue-500/12 -top-28 -left-24"
+                : "w-[620px] h-[620px] bg-blue-500/16 -top-44 -left-36"
+            }
+            delay={0}
+          />
+          <FloatingOrb
+            reducedMotion={reduceVisualLoad}
+            disableAnimation={isSafari}
+            className={
+              isSafari
+                ? "w-[420px] h-[420px] bg-sky-500/12 top-24 -right-28"
+                : "w-[500px] h-[500px] bg-sky-500/14 top-24 -right-40"
+            }
+            delay={2}
+          />
+          <FloatingOrb
+            reducedMotion={reduceVisualLoad}
+            disableAnimation={isSafari}
+            className={
+              isSafari
+                ? "w-[340px] h-[340px] bg-indigo-500/10 bottom-14 left-1/3"
+                : "w-[440px] h-[440px] bg-indigo-500/12 bottom-10 left-1/4"
+            }
             delay={4}
           />
         </>
       )}
 
-      <GridPattern className="text-slate-400" reducedMotion={isMobileOrIOS} />
+      <GridPattern className="text-slate-400" reducedMotion={reduceVisualLoad} />
 
-      {horizontalLines.map((line) => (
-        <GridLine
-          key={`h-${line.row}-${line.delay}`}
-          row={line.row}
-          duration={line.duration}
-          delay={line.delay}
-          isHorizontal
-          reducedMotion={isMobileOrIOS}
-        />
-      ))}
+      {!isSafari &&
+        horizontalLines.map((line) => (
+          <GridLine
+            key={`h-${line.row}-${line.delay}`}
+            row={line.row}
+            duration={line.duration}
+            delay={line.delay}
+            isHorizontal
+            reducedMotion={reduceVisualLoad}
+          />
+        ))}
 
-      {verticalLines.map((line) => (
-        <GridLine
-          key={`v-${line.row}-${line.delay}`}
-          row={line.row}
-          duration={line.duration}
-          delay={line.delay}
-          isHorizontal={false}
-          reducedMotion={isMobileOrIOS}
-        />
-      ))}
+      {!isSafari &&
+        verticalLines.map((line) => (
+          <GridLine
+            key={`v-${line.row}-${line.delay}`}
+            row={line.row}
+            duration={line.duration}
+            delay={line.delay}
+            isHorizontal={false}
+            reducedMotion={reduceVisualLoad}
+          />
+        ))}
 
-      {gridNodes.map((node) => (
-        <GridNode
-          key={`n-${node.row}-${node.col}`}
-          row={node.row}
-          col={node.col}
-          delay={node.delay}
-          reducedMotion={isMobileOrIOS}
-        />
-      ))}
+      {!isSafari &&
+        gridNodes.map((node) => (
+          <GridNode
+            key={`n-${node.row}-${node.col}`}
+            row={node.row}
+            col={node.col}
+            delay={node.delay}
+            reducedMotion={reduceVisualLoad}
+          />
+        ))}
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: isMobileOrIOS ? 0.35 : 0.45 }}
+          transition={{ duration: reduceVisualLoad ? 0.34 : 0.45 }}
           className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-400/30 bg-blue-500/10 text-blue-100 text-sm font-medium"
         >
           {lang === "zh" ? "企业AI作品集" : "Enterprise AI Portfolio"}
@@ -154,7 +188,7 @@ export function Hero({ lang }: { lang: Lang }) {
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: isMobileOrIOS ? 0.5 : 0.6, delay: 0.05 }}
+          transition={{ duration: reduceVisualLoad ? 0.48 : 0.6, delay: 0.05 }}
           className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight"
         >
           {t.heroTitle}
@@ -163,7 +197,7 @@ export function Hero({ lang }: { lang: Lang }) {
         <motion.p
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: isMobileOrIOS ? 0.5 : 0.6, delay: 0.12 }}
+          transition={{ duration: reduceVisualLoad ? 0.48 : 0.6, delay: 0.12 }}
           className="mt-4 text-base sm:text-lg text-slate-200 max-w-3xl mx-auto leading-relaxed"
         >
           {t.heroSubtitle}
@@ -172,7 +206,7 @@ export function Hero({ lang }: { lang: Lang }) {
         <motion.p
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: isMobileOrIOS ? 0.5 : 0.6, delay: 0.18 }}
+          transition={{ duration: reduceVisualLoad ? 0.48 : 0.6, delay: 0.18 }}
           className="mt-6 text-base sm:text-lg text-zinc-300 max-w-3xl mx-auto leading-relaxed"
         >
           {t.heroDescription}
@@ -181,7 +215,7 @@ export function Hero({ lang }: { lang: Lang }) {
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: isMobileOrIOS ? 0.52 : 0.62, delay: 0.25 }}
+          transition={{ duration: reduceVisualLoad ? 0.5 : 0.62, delay: 0.25 }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <motion.button
@@ -191,9 +225,9 @@ export function Hero({ lang }: { lang: Lang }) {
                 .getElementById("projects")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            whileHover={isMobileOrIOS ? undefined : { scale: 1.02 }}
+            whileHover={reduceVisualLoad ? undefined : { scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold shadow-lg shadow-blue-900/35 hover:shadow-blue-900/45 transition-shadow"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold shadow-md shadow-blue-900/25"
           >
             {lang === "zh" ? "查看项目" : "View Portfolio"}
           </motion.button>
@@ -201,7 +235,7 @@ export function Hero({ lang }: { lang: Lang }) {
             href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"
-            whileHover={isMobileOrIOS ? undefined : { scale: 1.02 }}
+            whileHover={reduceVisualLoad ? undefined : { scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-slate-900/70 text-zinc-100 font-semibold border border-slate-700 hover:bg-slate-800 transition-colors shadow-sm"
           >
@@ -212,17 +246,17 @@ export function Hero({ lang }: { lang: Lang }) {
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: isMobileOrIOS ? 0.52 : 0.62, delay: 0.35 }}
+          transition={{ duration: reduceVisualLoad ? 0.5 : 0.62, delay: 0.35 }}
           className="mt-14 flex flex-wrap items-center justify-center gap-2"
         >
           {t.capList.map((label, index) => (
             <motion.span
               key={label}
-              initial={isMobileOrIOS ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+              initial={reduceVisualLoad ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
-                duration: isMobileOrIOS ? 0.2 : 0.34,
-                delay: isMobileOrIOS ? 0 : 0.4 + index * 0.05,
+                duration: reduceVisualLoad ? 0.2 : 0.34,
+                delay: reduceVisualLoad ? 0 : 0.4 + index * 0.05,
               }}
               className={`px-3 py-1 rounded-lg text-xs font-semibold border ${tagColors[index] ?? tagColors[0]}`}
             >

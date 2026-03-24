@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { copy } from "../../../content/copy";
+import { useIsSafari } from "../../../hooks/useIsSafari";
 
 type IconProps = { className?: string };
 type Lang = "en" | "zh";
@@ -77,6 +78,7 @@ function ApiIcon({ className }: IconProps) {
 }
 
 export function WhyVibeCodingFails({ lang }: { lang: Lang }) {
+  const isSafari = useIsSafari();
   const t = copy[lang];
   const capabilityDescriptions =
     lang === "zh"
@@ -132,14 +134,14 @@ export function WhyVibeCodingFails({ lang }: { lang: Lang }) {
           backgroundSize: "48px 48px",
         }}
       />
-      <div className="absolute -top-12 right-0 w-96 h-96 rounded-full bg-blue-500/8 blur-2xl pointer-events-none" />
+      <div className="safari-soft-glow absolute -top-12 right-0 w-96 h-96 rounded-full bg-blue-500/8 blur-xl pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
+          transition={{ duration: isSafari ? 0.34 : 0.45 }}
           className="flex justify-center"
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-400/30 bg-blue-500/10 text-blue-100 text-sm font-medium">
@@ -151,7 +153,7 @@ export function WhyVibeCodingFails({ lang }: { lang: Lang }) {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.04 }}
+          transition={{ duration: isSafari ? 0.38 : 0.5, delay: 0.04 }}
           className="mt-4 text-center text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-100"
         >
           {t.capTitle}
@@ -161,7 +163,7 @@ export function WhyVibeCodingFails({ lang }: { lang: Lang }) {
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.08 }}
+          transition={{ duration: isSafari ? 0.38 : 0.5, delay: 0.08 }}
           className="mt-4 text-center text-zinc-300 max-w-3xl mx-auto leading-relaxed"
         >
           {lang === "zh"
@@ -170,13 +172,9 @@ export function WhyVibeCodingFails({ lang }: { lang: Lang }) {
         </motion.p>
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {capabilities.map(({ title, description, Icon, color, iconTone }, index) => (
-            <motion.div
+          {capabilities.map(({ title, description, Icon, color, iconTone }) => (
+            <div
               key={title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.08 + index * 0.06 }}
               className="group relative flex flex-col gap-3 p-6 rounded-2xl border border-slate-700 bg-slate-900/75"
             >
               <div
@@ -188,7 +186,7 @@ export function WhyVibeCodingFails({ lang }: { lang: Lang }) {
               </div>
               <p className="relative font-semibold text-zinc-100 text-sm">{title}</p>
               <p className="relative text-zinc-400 text-sm leading-relaxed">{description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

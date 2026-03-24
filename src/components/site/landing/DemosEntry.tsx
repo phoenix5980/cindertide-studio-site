@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { DemoCard } from "@/components/demos/DemoCard";
+import { useIsSafari } from "@/hooks/useIsSafari";
 
 type Lang = "en" | "zh";
 
 export function DemosEntry({ lang }: { lang: Lang }) {
+  const isSafari = useIsSafari();
   const text =
     lang === "zh"
       ? {
@@ -93,15 +95,15 @@ export function DemosEntry({ lang }: { lang: Lang }) {
   return (
     <section id="demos" className="relative py-24 sm:py-28">
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
-      <div className="absolute -left-20 top-8 h-72 w-72 rounded-full bg-blue-500/10 blur-2xl pointer-events-none" />
-      <div className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-indigo-500/10 blur-2xl pointer-events-none" />
+      <div className="safari-soft-glow absolute -left-20 top-8 h-72 w-72 rounded-full bg-blue-500/10 blur-xl pointer-events-none" />
+      <div className="safari-soft-glow absolute right-0 bottom-0 h-80 w-80 rounded-full bg-indigo-500/10 blur-xl pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
+          transition={{ duration: isSafari ? 0.34 : 0.45 }}
           className="mb-10 text-center"
         >
           <h2 className="text-4xl font-bold tracking-tight text-zinc-100 sm:text-5xl">{text.title}</h2>
@@ -109,16 +111,10 @@ export function DemosEntry({ lang }: { lang: Lang }) {
         </motion.div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          {text.cards.map((card, index) => (
-            <motion.div
-              key={card.href}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.36, delay: 0.04 * index }}
-            >
+          {text.cards.map((card) => (
+            <div key={card.href}>
               <DemoCard {...card} />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
