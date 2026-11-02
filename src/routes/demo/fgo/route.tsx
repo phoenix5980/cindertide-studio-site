@@ -1,7 +1,7 @@
 import type { MetaFunction } from "react-router";
+import { SITE_URL } from "@/lib/site";
 import { ComingSoonDemoPage } from "@/pages/demos/ComingSoonDemo";
 
-const SITE_URL = import.meta.env.VITE_SITE_URL ?? "https://cindertide.studio";
 const PAGE_PATH = "/demo/fgo";
 
 export const meta: MetaFunction = () => {

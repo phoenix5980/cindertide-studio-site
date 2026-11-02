@@ -6,7 +6,7 @@ type DemoCardProps = {
   description: string;
   href?: string;
   badge?: string;
-  tags?: string[];
+  tags?: readonly string[];
   note?: string;
 };
 

@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://phoenix5980.github.io/cindertide-studio-site/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://specc.sh/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://specc.sh/"/>
+  </url>
+  <url>
+    <loc>https://phoenix5980.github.io/cindertide-studio-site/projects/banking-copilot</loc>
+  </url>
+  <url>
+    <loc>https://phoenix5980.github.io/cindertide-studio-site/demo/banking</loc>
+  </url>
+  <url>
+    <loc>https://phoenix5980.github.io/cindertide-studio-site/demo/healthcare</loc>
+  </url>
+  <url>
+    <loc>https://phoenix5980.github.io/cindertide-studio-site/demo/fgo</loc>
+  </url>
+  <url>
+    <loc>https://phoenix5980.github.io/cindertide-studio-site/demo/agent</loc>
   </url>
 </urlset>

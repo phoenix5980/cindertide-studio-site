@@ -4,6 +4,17 @@ on:
   push:
     branches:
       - main
+    # Only rebuild when something that affects the site changes.
+    paths:
+      - "src/**"
+      - "public/**"
+      - "package.json"
+      - "package-lock.json"
+      - "vite.config.ts"
+      - "react-router.config.ts"
+      - "tsconfig.json"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -31,7 +42,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm ci
 
       - name: Build site
         run: npm run build
@@ -39,7 +50,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: build/client
 
   deploy:
     runs-on: ubuntu-latest

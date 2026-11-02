@@ -15,15 +15,5 @@ export default defineConfig({
   server: {
     host: "0.0.0.0", // Listen on all network interfaces to allow intranet access
     port: 5173,
-    proxy: {
-      "/trpc": {
-        target: "http://localhost:4000",
-        changeOrigin: true,
-      },
-      "/upload": {
-        target: "http://localhost:4000",
-        changeOrigin: true,
-      },
-    },
   },
 });

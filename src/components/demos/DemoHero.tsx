@@ -12,7 +12,7 @@ type DemoHeroProps = {
   title: string;
   subtitle: string;
   description: string;
-  tags?: string[];
+  tags?: readonly string[];
   actions?: DemoHeroAction[];
 };
 
